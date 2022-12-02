@@ -27,9 +27,16 @@ public class ParkingLot {
         return parkedPosition.size() == maxPosition;
     }
 
-    public Car fetch(Ticket ticket) {
+    public Car fetch(Ticket ticket)  {
+        if(isWrongTicket(ticket)) {
+            throw new UnrecognizedTicketExceptioin();
+        }
         Car returnCar = parkedPosition.get(ticket);
         parkedPosition.remove(ticket);
         return returnCar;
+    }
+
+    private boolean isWrongTicket(Ticket ticket) {
+        return !parkedPosition.containsKey(ticket);
     }
 }

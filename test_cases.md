@@ -1,4 +1,4 @@
-# Stroy1
+# Story1
 
 [x] Case 1
 - Given a parking lot, and a car,
@@ -29,3 +29,20 @@
 - Given a parking lot without any position, and a car, 
 - When park the car,
 - Then return nothing
+
+# story 2
+
+[ ] Case 7
+- Given a parking lot, an unrecognized ticket
+- When fetch the car,
+- Then return an error message Unrecognized parking ticket
+
+[ ] Case 8
+- Given a parking lot, an used ticket
+- When fetch the car,
+- Then return an error message Unrecognized parking ticket
+
+[ ] Case 9
+- Given a car, a parking lot without any position
+- When park the car,
+- Then return an error message No available position
