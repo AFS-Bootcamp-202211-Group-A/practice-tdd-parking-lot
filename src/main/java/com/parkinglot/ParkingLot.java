@@ -40,4 +40,8 @@ public class ParkingLot {
         return parkedPosition.size() == maxPosition;
     }
 
+    public int getEmptyPosition() {
+        return maxPosition - parkedPosition.size();
+    }
+
 }

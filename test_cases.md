@@ -109,3 +109,20 @@
 - Given a standard parking boy, who manage two parking lots, both without any position, and a car, 
 - When park the car, 
 - Then return nothing with error message "No available position."
+
+# Story5
+[] Case 1
+- Given a smart parking boy, who manage two parking lots, second parking lot has fewer empty position, and a car,
+- When park the car,
+- Then the car will be parked to the second parking lot
+
+[] Case 2
+- Given a smart parking boy, who manage two parking lots, first parking lot has fewer empty position, and a car,
+- When park the car,
+- Then the car will be parked to the first parking lot
+
+[] Case 3
+- Given a smart parking boy, who manage two parking lots, both without any position, and a car,
+- When park the car,
+- Then return nothing with error message "No available position."
+
