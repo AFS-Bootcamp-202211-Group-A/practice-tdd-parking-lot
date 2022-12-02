@@ -118,4 +118,17 @@ public class StandardParkingBoyTest {
         // then
         assertTrue(firstParkingLot.isRecognizedTicket(ticket));
     }
+    @Test
+    void should_park_in_second_parking_lot_when_park_given_first_parking_lot_full_and_a_car() {
+        // given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot();
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+        // when
+        standardParkingBoy.park(car);
+        Ticket ticket = standardParkingBoy.park(car);
+        // then
+        assertTrue(secondParkingLot.isRecognizedTicket(ticket));
+    }
 }
