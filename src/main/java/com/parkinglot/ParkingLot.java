@@ -9,17 +9,22 @@ public class ParkingLot {
     private HashMap<Ticket, Car> ticketCarMap = new HashMap<>();
     private static int capacity = 10;
 
-    public ParkingLot(int capacity){
+    public ParkingLot(int capacity) {
         this.capacity = capacity;
     }
+
     public Ticket park(Car car) {
-        if (ticketCarMap.size() >= capacity) {
+        if (isFull()) {
             return null;
         }
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);
         return ticket;
 
+    }
+
+    private boolean isFull() {
+        return ticketCarMap.size() >= capacity;
     }
 
     public Car fetch(Ticket ticket) {
