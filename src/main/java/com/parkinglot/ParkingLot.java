@@ -5,6 +5,9 @@ import java.util.HashMap;
 public class ParkingLot {
     private HashMap<Ticket, Car> parkedPosition = new HashMap<>();
     public Ticket park(Car car) {
+        if (parkedPosition.size() >= 10) {
+            return null;
+        }
         Ticket ticket = new Ticket();
         parkedPosition.put(ticket, car);
         return ticket;
