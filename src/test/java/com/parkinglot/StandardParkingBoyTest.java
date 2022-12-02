@@ -143,4 +143,22 @@ public class StandardParkingBoyTest {
         assertTrue(parkingLots.get(0).hasCar(ticket));
     }
 
+    @Test
+    public void should_park_to_second_parking_lot_when_car_park_given_2_lots_with_lot_1_full() {
+        //given
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(1));
+        parkingLots.add(new ParkingLot(1));
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+
+        //when
+        Car car1 = new Car();
+        parkingBoy.park(car1);
+        Car car2 = new Car();
+        Ticket ticket = parkingBoy.park(car2);
+        assertTrue(parkingLots.get(1).hasCar(ticket));
+    }
+
+
+
 }
