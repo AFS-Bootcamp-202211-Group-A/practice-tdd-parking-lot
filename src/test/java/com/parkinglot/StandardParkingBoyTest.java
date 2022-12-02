@@ -60,4 +60,21 @@ public class StandardParkingBoyTest {
                 () -> standardParkingBoy.fetch(ticket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
+
+    @Test
+    void should_return_exception_with_error_message_when_park_given_full_parking_with_default_capacity() {
+        // given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        for (int i=0; i<10; ++i) {
+            standardParkingBoy.park(car);
+        }
+        // when
+
+        // then
+        Exception exception = assertThrows(NoAvailableSpaceException.class,
+                () -> standardParkingBoy.park(car));
+        assertEquals("No available position.", exception.getMessage());
+    }
 }
