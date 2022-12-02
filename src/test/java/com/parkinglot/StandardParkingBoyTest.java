@@ -159,6 +159,27 @@ public class StandardParkingBoyTest {
         assertTrue(parkingLots.get(1).hasCar(ticket));
     }
 
+    @Test
+    public void should_get_2_correct_cars_when_2_car_park_and_fetched_given_2_lots() {
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(1));
+        parkingLots.add(new ParkingLot(1));
+
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        ArrayList<Car> cars = new ArrayList<>();
+        for (int i = 0; i < 2; i++) {
+            Car car = new Car();
+            cars.add(car);
+            tickets.add(parkingBoy.park(car));
+        }
+        for (int i = 0; i < 2; i++) {
+            Car fetchedCar = parkingBoy.fetch(tickets.get(i));
+            assertEquals(cars.get(i), fetchedCar);
+        }
+    }
+
 
 
 }
