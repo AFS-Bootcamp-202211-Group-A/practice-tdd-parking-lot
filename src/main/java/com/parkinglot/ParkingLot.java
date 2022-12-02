@@ -23,10 +23,6 @@ public class ParkingLot {
         return ticket;
     }
 
-    private boolean isFull() {
-        return parkedPosition.size() == maxPosition;
-    }
-
     public Car fetch(Ticket ticket)  {
         if(isWrongTicket(ticket)) {
             throw new UnrecognizedTicketException();
@@ -36,7 +32,12 @@ public class ParkingLot {
         return returnCar;
     }
 
-    private boolean isWrongTicket(Ticket ticket) {
+    public boolean isWrongTicket(Ticket ticket) {
         return !parkedPosition.containsKey(ticket);
     }
+
+    public boolean isFull() {
+        return parkedPosition.size() == maxPosition;
+    }
+
 }
