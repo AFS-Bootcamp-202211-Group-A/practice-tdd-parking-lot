@@ -11,7 +11,7 @@ import static java.util.Objects.isNull;
 
 public class ParkingBoy {
 
-    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+    public ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     public ParkingBoy(ParkingLot parkingLot) {
         parkingLots.add(parkingLot);
     }

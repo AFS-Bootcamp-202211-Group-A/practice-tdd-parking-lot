@@ -7,10 +7,14 @@ import static java.util.Objects.isNull;
 public class ParkingLot {
 
     private HashMap<Ticket, Car> ticketCarMap = new HashMap<>();
-    private static int capacity = 10;
+    private int capacity;
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
+    }
+
+    public ParkingLot() {
+        this.capacity = 10;
     }
 
     public Ticket park(Car car) throws UnavailableSlotException {
@@ -41,7 +45,7 @@ public class ParkingLot {
         return ticketCarMap;
     }
 
-    public static int getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 }

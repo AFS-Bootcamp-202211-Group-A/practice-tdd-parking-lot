@@ -168,4 +168,23 @@ class SmartParkingBoyTest {
 
     }
 
+    @Test
+    public void should_return_one_car_in_parking_lot_1_when_park_the_car_given_two_parking_lot_different_capacities_one_cars_one_smart_parking_boy() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(10);
+        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car();
+
+
+        //when
+        Ticket ticket = smartParkingBoy.park(car);
+
+        //then
+        assertEquals(1, parkingLot2.getTicketCarMap().size());
+
+
+    }
+
 }
