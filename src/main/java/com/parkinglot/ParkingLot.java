@@ -17,7 +17,7 @@ public class ParkingLot {
         if (isFull()) {
             throw new NoAvailablePositionException();
         }
-        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket(this);
         parkedPosition.put(ticket, car);
         return ticket;
 

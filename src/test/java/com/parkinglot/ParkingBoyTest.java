@@ -91,4 +91,19 @@ public class ParkingBoyTest {
         Exception exception = assertThrows(NoAvailablePositionException.class, () -> parkingBoy.park(car));
         assertEquals(exception.getMessage(), "No available position");
     }
+
+    @Test
+    void should_park_first_parking_lot_when_park_given_parking_boy_and_2_available_parking_lots() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(10);
+        ParkingLot secondParkingLot = new ParkingLot(10);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(firstParkingLot,secondParkingLot);
+        Car car = new Car();
+        //when
+
+        ParkingLot selectedParkingLot =  parkingBoy.park(car).getSelectedParkingLot();
+        //then
+        assertEquals(selectedParkingLot,firstParkingLot);
+    }
+
 }
