@@ -14,6 +14,9 @@ public class ParkingLot {
     private Map<Ticket, Car> parkedPosition = new HashMap<>();
 
     public Ticket park(Car car) {
+        if (isFull()){
+            throw new NoAvailablePositionException();
+        }
         Ticket ticket = new Ticket(this);
         parkedPosition.put(ticket, car);
         return ticket;
@@ -38,5 +41,8 @@ public class ParkingLot {
 
     private boolean isUnrecognizedTicket(Ticket ticket) {
         return !parkedPosition.containsKey(ticket);
+    }
+    public int getFreePositions(){
+        return capacity - parkedPosition.size();
     }
 }

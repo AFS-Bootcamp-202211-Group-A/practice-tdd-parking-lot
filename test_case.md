@@ -58,6 +58,15 @@ Then return nothing.
 
 ## Story 5
 
-- Case 1
+- Case 1 - Given that a smart parking boy, who manage two parking lots, When park, Then park at more empty positions parking lot.
+
+- Case 2 - Given a smart parking boy, who manage two parking lots, both with a parked car, and two parking ticket, When fetch the car twice, Then return the right car with each ticket
+
+- Case 3 - Given a smart parking boy, who manage two parking lots, and an unrecognized ticket, When fetch the car, Then return nothing with error message "Unrecognized parking ticket.”
+
+- Case 4 - Given a smart parking boy, who manage two parking lots, and a used ticket, When fetch the car, Then return nothing with error message "Unrecognized parking ticket."
+
+- Case 5 - Given a smart parking boy, who manage two parking lots, both without any position, and a car, When park the car, Then return nothing with error message "No available position."
+
 
 ## Story 6
