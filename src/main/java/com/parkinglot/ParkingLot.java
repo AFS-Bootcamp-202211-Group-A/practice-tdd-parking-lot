@@ -15,7 +15,7 @@ public class ParkingLot {
     }
     public Ticket park(Car car) {
         if(parkedPostion.size() < capacity){
-            Ticket ticket = new Ticket(car);
+            Ticket ticket = new Ticket();
             parkedPostion.put(ticket, car);
             return ticket;
         }
