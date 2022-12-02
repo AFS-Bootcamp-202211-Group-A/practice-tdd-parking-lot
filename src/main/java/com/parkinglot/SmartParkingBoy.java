@@ -12,10 +12,10 @@ public class SmartParkingBoy {
 
     public Ticket park(Car car) {
         try {
-            ParkingLot firstNotFullParkingLot = parkingLotList.stream()
+            ParkingLot selectedParkingLot = parkingLotList.stream()
                     .reduce(((parkingLot, parkingLot2) -> parkingLot.getFreePositions()>=parkingLot2.getFreePositions()? parkingLot:parkingLot2))
                     .get();
-            return firstNotFullParkingLot.park(car);
+            return selectedParkingLot.park(car);
         } catch (Exception e) {
             throw new NoAvailablePositionException();
         }
