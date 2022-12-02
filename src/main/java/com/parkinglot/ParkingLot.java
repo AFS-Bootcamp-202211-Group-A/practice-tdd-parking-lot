@@ -17,7 +17,7 @@ public class ParkingLot {
             parkedPosition.put(ticket, car);
             return ticket;
         }
-        return null;
+        throw new parkingLotFullException("No available position.");
     }
 
     public Car fetch(Ticket ticket) {

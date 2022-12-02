@@ -64,18 +64,18 @@ public class ParkingLotTest {
 //        //should
 //        assertNull(hopeToFetchCar);
 //    }
-    @Test
-    void should_return_null_when_park_given_full_parking_lot(){
-        //given
-        ParkingLot parkingLot = new ParkingLot(2);
-        Car car = new Car();
-        Ticket ticket1 = parkingLot.park(new Car());
-        Ticket ticket2 = parkingLot.park(new Car());
-        //when
-        Ticket ticket = parkingLot.park(car);
-        //should
-        assertNull(ticket);
-    }
+//    @Test
+//    void should_return_null_when_park_given_full_parking_lot(){
+//        //given
+//        ParkingLot parkingLot = new ParkingLot(2);
+//        Car car = new Car();
+//        Ticket ticket1 = parkingLot.park(new Car());
+//        Ticket ticket2 = parkingLot.park(new Car());
+//        //when
+//        Ticket ticket = parkingLot.park(car);
+//        //should
+//        assertNull(ticket);
+//    }
     @Test
     void should_return_exception_when_fetch_given_unrecognized_ticket(){
         //given
@@ -99,5 +99,17 @@ public class ParkingLotTest {
         Exception exception = assertThrows(UnrecognizedTicketException.class,
                 () -> parkingLot.fetch(usedTicket));
         assertEquals("Unrecognized parking ticket.",exception.getMessage());
+    }
+    @Test
+    void should_return_exception_when_park_full_parking_lot(){
+        //given
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        parkingLot.park(new Car());
+        //when
+        //should
+        Exception exception = assertThrows(parkingLotFullException.class,
+                () -> parkingLot.park(car));
+        assertEquals("No available position.",exception.getMessage());
     }
 }
