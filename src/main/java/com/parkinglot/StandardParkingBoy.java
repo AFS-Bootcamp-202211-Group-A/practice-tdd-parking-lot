@@ -13,7 +13,18 @@ public class StandardParkingBoy {
         this.parkingLots = parkingLots;
     }
     public Ticket park(Car car) {
-        return this.parkingLots.get(0).park(car);
+        NoAvailableSpaceException exception = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            try {
+                return parkingLot.park(car);
+            } catch (NoAvailableSpaceException noAvailableSpaceException) {
+                exception = noAvailableSpaceException;
+            }
+        }
+        if (exception != null) {
+            throw exception;
+        }
+        return null;
     }
 
     public Car fetch(Ticket ticket) {
