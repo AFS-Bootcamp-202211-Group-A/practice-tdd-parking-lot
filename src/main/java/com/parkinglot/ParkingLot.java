@@ -15,12 +15,16 @@ public class ParkingLot {
         this.maxPosition = maxPosition;
     }
     public Ticket park(Car car) {
-        if (parkedPosition.size() == maxPosition) {
+        if (isFull()) {
             return null;
         }
         Ticket ticket = new Ticket();
         parkedPosition.put(ticket, car);
         return ticket;
+    }
+
+    private boolean isFull() {
+        return parkedPosition.size() == maxPosition;
     }
 
     public Car fetch(Ticket ticket) {
