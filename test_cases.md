@@ -19,16 +19,11 @@ When fetch car,
 Return null car
 
 Case 5 - 
-Given a empty ticket, 
-When fetch car, 
-Return null car
-
-Case 6 - 
 Given a used ticket, 
 When fetch car, 
 Return null car
 
-Case 7 - 
+Case 6 - 
 Given a full parking lot, and a car, 
 When part the car, 
 Return null ticket

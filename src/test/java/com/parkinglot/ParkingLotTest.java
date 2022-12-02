@@ -52,4 +52,16 @@ public class ParkingLotTest {
         //should
         assertNull(fetchedCar1);
     }
+    @Test
+    void should_return_null_when_fetch_given_used_ticket(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        Ticket ticket = parkingLot.park(car);
+        Car fetchedCar = parkingLot.fetch(ticket);
+        //when
+        Car hopeToFetchCar = parkingLot.fetch(ticket);
+        //should
+        assertNull(hopeToFetchCar);
+    }
 }
