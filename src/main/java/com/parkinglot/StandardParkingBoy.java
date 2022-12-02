@@ -13,16 +13,16 @@ public class StandardParkingBoy {
         this.parkingLots = parkingLots;
     }
     public Ticket park(Car car) {
-        NoAvailableSpaceException exception = null;
+        RuntimeException runtimeException = null;
         for (ParkingLot parkingLot : parkingLots) {
             try {
                 return parkingLot.park(car);
-            } catch (NoAvailableSpaceException noAvailableSpaceException) {
-                exception = noAvailableSpaceException;
+            } catch (RuntimeException e) {
+                runtimeException = e;
             }
         }
-        if (exception != null) {
-            throw exception;
+        if (runtimeException != null) {
+            throw runtimeException;
         }
         return null;
     }
