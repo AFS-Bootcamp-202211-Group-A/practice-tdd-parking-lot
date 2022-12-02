@@ -54,5 +54,24 @@ class ParkingBoyTest {
 
     }
 
+    @Test
+    public void should_return_exception_with_error_message_when_pass_the_wrong_ticket_given_wrong_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Ticket ticket = parkingBoy.park(car);
+        Ticket dummyTicket = new Ticket();
+
+        //when
+
+        //then
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingBoy.fetch(dummyTicket));
+        assertEquals("Unrecognized packing ticket", exception.getMessage());
+
+    }
+
+    
+
 
 }
