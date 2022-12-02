@@ -103,5 +103,23 @@ class ParkingBoyTest {
         assertEquals("Unrecognized packing ticket", exception.getMessage());
     }
 
+    @Test
+    public void should_return_exception_with_error_message_when_park_the_car_given_the_parking_lot_is_full() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        for (int i = 0; i < 10; i++) {
+            Car car = new Car();
+            parkingBoy.park(car);
+        }
+        Car extraCar = new Car();
+
+        //when
+
+        //then
+        Exception exception = assertThrows(UnavailableSlotException.class, () -> parkingBoy.park(extraCar));
+        assertEquals("No available position", exception.getMessage());
+    }
+
 
 }
