@@ -56,18 +56,6 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_null_when_no_car_parked_given_parking_lot_and_unexisting_ticket() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-
-        //when
-        Car parkedCar = parkingLot.fetch(new Ticket());
-
-        //then
-        assertNull(parkedCar);
-    }
-
-    @Test
     public void should_return_null_when_no_car_parked_given_parking_lot_and_used_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
@@ -77,27 +65,13 @@ public class ParkingLotTest {
         Ticket ticket = parkingLot.park(car);
         Car parkedCar = parkingLot.fetch(ticket);
 
-        Car parkedCarAgain = parkingLot.fetch(ticket);
-
         //then
         assertNotNull(parkedCar);
-        assertNull(parkedCarAgain);
-    }
 
-    @Test
-    public void should_return_null_when_10_car_parked_given_parking_lot_full() {
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-
-        //when
-        for (int i = 0; i < 10; i++) {
-            parkingLot.park(new Car());
-        }
-
-        Ticket ticket = parkingLot.park(new Car());
-
-        //then
-        assertNull(ticket);
+        Exception unrecognisedTicketException = assertThrows(UnrecognizedTicketException.class, ()->{
+            parkingLot.fetch(new Ticket());
+        });
+        assertEquals("Unrecognised Parking Ticket", unrecognisedTicketException.getMessage());
     }
 
     @Test
@@ -114,5 +88,35 @@ public class ParkingLotTest {
 
         //then
         assertNotNull(ticket);
+    }
+
+    @Test
+    public void should_error_message_when_fetch_car_given_ticket_is_unrecognised() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+
+        Exception unrecognisedTicketException = assertThrows(UnrecognizedTicketException.class, ()->{
+            parkingLot.fetch(new Ticket());
+        });
+        assertEquals("Unrecognised Parking Ticket", unrecognisedTicketException.getMessage());
+
+    }
+
+
+    @Test
+    public void should_error_message_when_10_car_parked_given_parking_lot_full() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+
+        //when
+        for (int i = 0; i < 10; i++) {
+            parkingLot.park(new Car());
+        }
+
+        Exception parkingLotFullException = assertThrows(ParkingLotFullException.class, ()->{
+            parkingLot.park(new Car());
+        });
+        assertEquals("No available position.", parkingLotFullException.getMessage());
+
     }
 }

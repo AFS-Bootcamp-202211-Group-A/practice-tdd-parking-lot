@@ -18,7 +18,7 @@ public class ParkingLot {
     public Ticket park(Car car) {
 
         if (parkedCars.size() >= parkingSpaces){
-            return null;
+            throw new ParkingLotFullException();
         }
         Ticket ticket = new Ticket();
         parkedCars.put(ticket, car);
@@ -27,6 +27,9 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
+        if (!parkedCars.containsKey(ticket)){
+            throw new UnrecognizedTicketException();
+        }
         return parkedCars.remove(ticket);
     }
 
