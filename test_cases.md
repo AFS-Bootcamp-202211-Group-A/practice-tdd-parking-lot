@@ -6,14 +6,14 @@
 - Then return a parking ticket.
 
 [] Case 2
-- Given a ticket,
-- When fetch a car,
-- Then return a car
-
-[] Case 3
 - Given a parking lot with two cars, a correspond ticket,
 - When fetch a car,
 - Then return a correspond car
+
+[] Case 3
+- Given a ticket,
+- When fetch a car,
+- Then return a car
 
 [] Case 4
 - Given a parking lot,a wrong ticket,
