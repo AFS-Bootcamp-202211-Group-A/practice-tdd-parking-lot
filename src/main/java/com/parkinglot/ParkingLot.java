@@ -12,12 +12,15 @@ public class ParkingLot {
         this.capacity = capacity;
     }
     public Ticket park(Car car) {
-        if(parkedPosition.size() < capacity){
-            Ticket ticket = new Ticket();
-            parkedPosition.put(ticket, car);
-            return ticket;
+        if(isFull()){
+            throw new parkingLotFullException("No available position.");
         }
-        throw new parkingLotFullException("No available position.");
+        Ticket ticket = new Ticket();
+        parkedPosition.put(ticket, car);
+        return ticket;
+    }
+    public boolean isFull() {
+        return parkedPosition.size() >= capacity;
     }
 
     public Car fetch(Ticket ticket) {
