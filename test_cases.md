@@ -81,7 +81,7 @@ Return exception message: "No available position."
 [Story4]
 Case 16 -
 Given a parking boy, two not full parking lot and car,
-When park car, parking lot 1 is full,
+When park car, 
 Return ticket
 
 Case 17 -
@@ -110,3 +110,32 @@ When park the car,
 Return exception message: "No available position."
 
 [Story5]
+Case 22 -
+Given a smart parking boy, two not full parking lot and car,
+When park car,
+Return ticket
+
+Case 23 -
+Given a smart parking boy, car, two parking lot and first one of it is full
+When park car,
+Return car was parked to parking lot two
+
+Case 24 -
+Given a smart parking boy, two parked car, two parking lot, two cars are not in the same parking lot
+When fetch car.
+Return correct car from correct parking lot
+
+Case 25 -
+Given a smart parking boy, unrecognized ticket,
+When fetch car,
+Return exception message: "Unrecognized parking ticket."
+
+Case 26 -
+Given a smart parking boy, a used ticket,
+When fetch car,
+Return exception message: "Unrecognized parking ticket."
+
+Case 27 -
+Given a smart parking boy, two full parking lot, and a car
+When park the car,
+Return exception message: "No available position."
