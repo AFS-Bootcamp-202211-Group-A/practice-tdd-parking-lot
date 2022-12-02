@@ -123,7 +123,26 @@ public class StandardParkingBoyTest {
         Ticket ticket = standardParkingBoy.park(car);
 
         //then
-        assertTrue(!parkingLot1.isWrongTicket(ticket));
+        assertEquals(car, parkingLot1.fetch(ticket));
+    }
 
+    @Test
+    void should_park_second_parking_lot_when_park_given_two_parking_slot_and_first_full_and_second_avaliable_and_car() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot();
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        parkingLot1.park(car1);
+
+        //when
+        Ticket ticket = standardParkingBoy.park(car2);
+
+        //then
+        assertEquals(car2, parkingLot2.fetch(ticket));
     }
 }
