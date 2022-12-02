@@ -51,19 +51,6 @@ public class ParkingLotTest {
         assertEquals(bobCar, bobFetchedCar);
     }
 
-//    @Test
-//    void should_return_null_when_fetch_a_car_given_wrong_ticket() {
-//        //given
-//        ParkingLot parkingLot = new ParkingLot();
-//        Ticket ticket = new Ticket();
-//
-//        //when
-//        Car fetchedCar = parkingLot.fetch(ticket);
-//
-//        //then
-//        assertNull(fetchedCar);
-//    }
-
     @Test
     void should_return_exception_with_error_message_when_fetch_a_car_given_unrecognized_ticket() {
         //given
@@ -79,21 +66,6 @@ public class ParkingLotTest {
         );
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
-
-//    @Test
-//    void should_return_null_when_fetch_a_car_given_used_parking_ticket() {
-//        //given
-//        ParkingLot parkingLot = new ParkingLot();
-//        Car car = new Car();
-//        Ticket ticket = parkingLot.park(car);
-//        parkingLot.fetch(ticket);
-//
-//        //when
-//        Car fetchedCar = parkingLot.fetch(ticket);
-//
-//        //then
-//        assertNull(fetchedCar);
-//    }
 
     @Test
     void should_return_exception_with_error_message_when_fetch_a_car_given_used_parking_ticket() {
@@ -111,20 +83,6 @@ public class ParkingLotTest {
         );
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
-
-//    @Test
-//    void should_return_null_when_park_a_car_given_parking_lot_without_position() {
-//        //given
-//        ParkingLot parkingLot = new ParkingLot(1);
-//        Car car = new Car();
-//        parkingLot.park(car);
-//        Car extraCar = new Car();
-//        //when
-//        Ticket ticket = parkingLot.park(extraCar);
-//
-//        //then
-//        assertNull(ticket);
-//    }
 
     @Test
     void should_return_exception_with_error_message_when_park_given_parking_lot_without_position() {
