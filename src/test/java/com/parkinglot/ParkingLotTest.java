@@ -112,17 +112,33 @@ public class ParkingLotTest {
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
+//    @Test
+//    void should_return_null_when_park_a_car_given_parking_lot_without_position() {
+//        //given
+//        ParkingLot parkingLot = new ParkingLot(1);
+//        Car car = new Car();
+//        parkingLot.park(car);
+//        Car extraCar = new Car();
+//        //when
+//        Ticket ticket = parkingLot.park(extraCar);
+//
+//        //then
+//        assertNull(ticket);
+//    }
+
     @Test
-    void should_return_null_when_park_a_car_given_parking_lot_without_position() {
+    void should_return_exception_with_error_message_when_park_given_parking_lot_without_position() {
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         Car car = new Car();
         parkingLot.park(car);
         Car extraCar = new Car();
         //when
-        Ticket ticket = parkingLot.park(extraCar);
 
         //then
-        assertNull(ticket);
+        Exception exception = assertThrows(NoAvailablePositionException.class,
+                () -> parkingLot.park(extraCar)
+        );
+        assertEquals("No available position.", exception.getMessage());
     }
 }
