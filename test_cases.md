@@ -46,3 +46,9 @@ Case 9 -
 Given a full parking lot, and a car,
 When park the car,
 Return exception message: "No available position."
+
+[Story 3]
+Case 10 -
+Given a parking boy,
+When park car,
+Return ticket
