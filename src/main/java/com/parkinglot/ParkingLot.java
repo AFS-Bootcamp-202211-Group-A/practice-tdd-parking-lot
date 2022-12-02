@@ -1,22 +1,18 @@
 package com.parkinglot;
 
-import org.omg.CORBA.INTERNAL;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import static java.util.Objects.isNull;
 
 public class ParkingLot {
 
-    HashMap<Ticket, Car> ticketCarMap = new HashMap<Ticket, Car>();
-    private static final int capacity = 10;
+    HashMap<Ticket, Car> ticketCarMap = new HashMap<>();
+    private static final int CAPACITY = 10;
 
     public Ticket park(Car car) {
-        if( ticketCarMap.size() >= 10){
+        if (ticketCarMap.size() >= CAPACITY) {
             return null;
-        }else {
+        } else {
             Ticket ticket = new Ticket();
             ticketCarMap.put(ticket, car);
             return ticket;
@@ -26,7 +22,7 @@ public class ParkingLot {
     public Car fetch(Ticket ticket) {
 
         Car fetchedCar = ticketCarMap.getOrDefault(ticket, null);
-        if(!isNull(fetchedCar)){
+        if (!isNull(fetchedCar)) {
             ticketCarMap.remove(ticket);
         }
         return fetchedCar;
