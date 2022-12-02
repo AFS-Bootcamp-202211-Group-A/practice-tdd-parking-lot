@@ -1,3 +1,4 @@
+[Story 1]
 Case 1 - 
 Given a parking lot, and a car,
 When park the car, 
@@ -25,5 +26,21 @@ Return null car
 
 Case 6 - 
 Given a full parking lot, and a car, 
-When part the car, 
+When park the car, 
 Return null ticket
+
+[Story 2]
+Case 7 -
+Given unrecognized ticket,
+When fetch car,
+Return exception message: "Unrecognized parking ticket."
+
+Case 8 -
+Given a used ticket,
+When fetch car,
+Return exception message: "Unrecognized parking ticket."
+
+Case 9 -
+Given a full parking lot, and a car,
+When park the car,
+Return exception message: "No available position."

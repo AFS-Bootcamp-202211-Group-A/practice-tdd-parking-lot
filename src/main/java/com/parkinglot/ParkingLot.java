@@ -21,6 +21,9 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
+        if(!parkedPosition.containsKey(ticket)){
+            throw new UnrecognizedTicketException("Unrecognized parking ticket.");
+        }
         Car car = parkedPosition.get(ticket);
         parkedPosition.remove(ticket);
         return car;
