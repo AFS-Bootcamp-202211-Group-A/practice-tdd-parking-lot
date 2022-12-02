@@ -6,13 +6,14 @@ import java.util.Map;
 public class ParkingLot {
     private final int capacity;
 
-    public ParkingLot(int capacity){
+    public ParkingLot(int capacity) {
         this.capacity = capacity;
 
     }
+
     private Map<Ticket, Car> parkedPosition = new HashMap<>();
 
-    public Ticket park(Car car) throws NoAvailablePositionException{
+    public Ticket park(Car car) {
         if (isFull()) {
             throw new NoAvailablePositionException();
         }
@@ -26,8 +27,8 @@ public class ParkingLot {
         return parkedPosition.size() >= capacity;
     }
 
-    public Car fetch(Ticket ticket) throws UnrecognizedTicketException {
-        if (isUnrecognizedTicket(ticket)){
+    public Car fetch(Ticket ticket) {
+        if (isUnrecognizedTicket(ticket)) {
             throw new UnrecognizedTicketException();
         }
 
