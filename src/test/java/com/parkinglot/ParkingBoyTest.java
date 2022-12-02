@@ -127,6 +127,7 @@ public class ParkingBoyTest {
         assertEquals(car2,fetchedCar2);
     }
     @Test
+    //case 20
     void should_return_exception_when_fetch_given_unrecognized_ticket_and_two_parking_lot(){
         //given
         ParkingLot parkingLot1 = new ParkingLot();
@@ -137,6 +138,22 @@ public class ParkingBoyTest {
         //should
         Exception exception = assertThrows(UnrecognizedTicketException.class,
                 () -> parkingBoy.fetch(unrecognizedTicket));
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+    }
+    @Test
+    //case 21
+    void should_return_exception_when_fetch_given_used_ticket_and_two_parking_lot(){
+        //given
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        Car car = new Car();
+        Ticket usedTicket = parkingBoy.park(car);
+        parkingBoy.fetch(usedTicket);
+        //when
+        //should
+        Exception exception = assertThrows(UnrecognizedTicketException.class,
+                () -> parkingBoy.fetch(usedTicket));
         assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 }
