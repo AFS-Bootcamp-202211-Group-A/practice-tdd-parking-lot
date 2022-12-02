@@ -74,7 +74,7 @@ public class ParkingLotTest {
         final int CAPACITY = 10;
         for (int i=0;i<CAPACITY;i++){
             Car dummyCar = new Car();
-            parkingLot.park(car);
+            parkingLot.park(dummyCar);
         }
         //when
 

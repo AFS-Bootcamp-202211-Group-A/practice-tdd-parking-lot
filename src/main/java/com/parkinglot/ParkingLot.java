@@ -12,9 +12,9 @@ public class ParkingLot {
             Ticket ticket = new Ticket();
             parkedPosition.put(ticket, car);
             return ticket;
-        } else {
-            return null;
         }
+        return null;
+
     }
 
     public Car fetch(Ticket ticket) {
