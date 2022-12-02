@@ -42,4 +42,16 @@ public class ParkingBoyTest {
         //should
         assertEquals(car1,fetchedCar1);
     }
+    @Test
+    void should_return_exception_when_fetch_given_unrecognized_ticket(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Ticket unrecognizedTicket = new Ticket();
+        //when
+        //should
+        Exception exception = assertThrows(UnrecognizedTicketException.class,
+                () -> parkingBoy.fetch(unrecognizedTicket));
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+    }
 }
