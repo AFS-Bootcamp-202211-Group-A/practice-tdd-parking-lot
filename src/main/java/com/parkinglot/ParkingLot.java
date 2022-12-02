@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import static java.util.Objects.isNull;
+
 public class ParkingLot {
 
     HashMap<Ticket, Car> ticketCarMap = new HashMap<Ticket, Car>();
@@ -17,7 +19,12 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        return ticketCarMap.getOrDefault(ticket, null);
+
+        Car fetchedCar = ticketCarMap.getOrDefault(ticket, null);
+        if(!isNull(fetchedCar)){
+            ticketCarMap.remove(ticket);
+        }
+        return fetchedCar;
     }
 
 
