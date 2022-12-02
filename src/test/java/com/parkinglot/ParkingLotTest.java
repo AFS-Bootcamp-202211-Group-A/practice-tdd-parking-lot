@@ -80,6 +80,7 @@ public class ParkingLotTest {
         Car parkedCarAgain = parkingLot.fetch(ticket);
 
         //then
+        assertNotNull(parkedCar);
         assertNull(parkedCarAgain);
     }
 
