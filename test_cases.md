@@ -49,6 +49,31 @@ Return exception message: "No available position."
 
 [Story 3]
 Case 10 -
-Given a parking boy,
+Given a parking boy, parking lot and car,
 When park car,
 Return ticket
+
+Case 11 -
+Given a parking boy, ticket & parked car,
+When fetch car,
+Return a car
+
+Case 12 -
+Given parking boy, two parked car,
+When fetch car.
+Return correct car
+
+Case 13 -
+Given parking boy, unrecognized ticket,
+When fetch car,
+Return exception message: "Unrecognized parking ticket."
+
+Case 14 -
+Given parking boy, a used ticket,
+When fetch car,
+Return exception message: "Unrecognized parking ticket."
+
+Case 15 -
+Given parking boy, a full parking lot, and a car,
+When park the car,
+Return exception message: "No available position."
