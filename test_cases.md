@@ -116,7 +116,7 @@ When park car,
 Return ticket
 
 Case 23 -
-Given a smart parking boy, car, two parking lot and first one of it is full
+Given a smart parking boy, two car, two parking lot
 When park car,
 Return car was parked to parking lot two
 

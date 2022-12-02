@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ParkingLot {
 
-    public int capacity=10;
+    private int capacity=10;
     private final Map<Ticket, Car> parkedPosition = new HashMap<>();
     public ParkingLot(){}
     public ParkingLot(int capacity){
@@ -34,5 +34,9 @@ public class ParkingLot {
 
     public int getSize() {
         return parkedPosition.size();
+    }
+
+    public int getFreeSize() {
+        return capacity - parkedPosition.size();
     }
 }
