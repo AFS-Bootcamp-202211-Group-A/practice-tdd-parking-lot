@@ -144,25 +144,29 @@ class ParkingBoyTest {
 
     }
 
-//    @Test
-//    public void should_return_two_tickets_when_park_the_car_given_two_parking_lot_two_cars_one_parking_boy() {
-//        //given
-//        ParkingLot parkingLot1 = new ParkingLot(1);
-//        ParkingLot parkingLot2 = new ParkingLot(1);
-//        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
-//        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
-//
-//
-//        //when
-//        Ticket ticket1 = parkingBoy.park(new Car());
-//        Ticket ticket2 = parkingBoy.park(new Car());
-//
-//        //then
-//        assertEquals(car1, fetchedCar1);
-//        assertEquals(car2, fetchedCar2);
-//
-//
-//    }
+    @Test
+    public void should_return_two_cars_when_park_the_car_given_two_parking_lot_two_cars_one_parking_boy() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+
+        //when
+        Ticket ticket1 = parkingBoy.park(car1);
+        Ticket ticket2 = parkingBoy.park(car2);
+        Car fetchedCar1 = parkingBoy.fetch(ticket1);
+        Car fetchedCar2 = parkingBoy.fetch(ticket2);
+
+        //then
+        assertEquals(car1, fetchedCar1);
+        assertEquals(car2, fetchedCar2);
+
+
+    }
 
 
 }

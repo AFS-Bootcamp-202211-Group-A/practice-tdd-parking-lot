@@ -2,8 +2,12 @@ package com.parkinglot;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.isNull;
 
 public class ParkingBoy {
 
@@ -16,16 +20,22 @@ public class ParkingBoy {
         this.parkingLots.addAll(parkingLots);
     }
 
-    public Ticket park(Car car) {
-        for (ParkingLot parkingLot: parkingLots){
-            if(parkingLot.getTicketCarMap().size() < parkingLot.getCapacity()){
-                return parkingLot.park(car);
-            }
+    public Ticket park(Car car) throws UnavailableSlotException{
+        Optional<ParkingLot> optionalParkingLot = parkingLots.stream().filter(parkingLot ->
+                parkingLot.getTicketCarMap().size() < parkingLot.getCapacity()
+        ).findFirst();
+        if(!optionalParkingLot.isPresent()){
+            throw new UnavailableSlotException();
         }
-        return null;
+        return optionalParkingLot.get().park(car);
     }
 
-    public Car fetch(Ticket ticket) {
-        return null;
+    public Car fetch(Ticket ticket) throws UnrecognizedTicketException {
+        Optional<ParkingLot> optionalParkingLot = parkingLots.stream().filter(parkingLot ->
+                parkingLot.getTicketCarMap().containsKey(ticket)).findFirst();
+        if(!optionalParkingLot.isPresent()){
+            throw new UnrecognizedTicketException();
+        }
+        return optionalParkingLot.get().fetch(ticket);
     }
 }
