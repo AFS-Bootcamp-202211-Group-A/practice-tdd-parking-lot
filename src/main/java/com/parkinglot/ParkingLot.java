@@ -13,13 +13,17 @@ public class ParkingLot {
     private Map<Ticket, Car> parkedPosition = new HashMap<>();
 
     public Ticket park(Car car) {
-        if (parkedPosition.size() < capacity) {
+        if (isNotFull()) {
             Ticket ticket = new Ticket();
             parkedPosition.put(ticket, car);
             return ticket;
         }
         return null;
 
+    }
+
+    private boolean isNotFull() {
+        return parkedPosition.size() < capacity;
     }
 
     public Car fetch(Ticket ticket) {
