@@ -39,31 +39,31 @@ public class ParkingLotTest {
         //should
         assertEquals(car1,fetchedCar1);
     }
-    @Test
-    void should_return_null_when_fetch_given_wrong_ticket(){
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car1 = new Car();
-        Car car2 = new Car();
-        Ticket ticket1 = parkingLot.park(car1);
-        Ticket ticket2 = new Ticket();
-        //when
-        Car fetchedCar1 = parkingLot.fetch(ticket2);
-        //should
-        assertNull(fetchedCar1);
-    }
-    @Test
-    void should_return_null_when_fetch_given_used_ticket(){
-        //given
-        ParkingLot parkingLot = new ParkingLot();
-        Car car = new Car();
-        Ticket ticket = parkingLot.park(car);
-        Car fetchedCar = parkingLot.fetch(ticket);
-        //when
-        Car hopeToFetchCar = parkingLot.fetch(ticket);
-        //should
-        assertNull(hopeToFetchCar);
-    }
+//    @Test
+//    void should_return_null_when_fetch_given_wrong_ticket(){
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car1 = new Car();
+//        Car car2 = new Car();
+//        Ticket ticket1 = parkingLot.park(car1);
+//        Ticket ticket2 = new Ticket();
+//        //when
+//        Car fetchedCar1 = parkingLot.fetch(ticket2);
+//        //should
+//        assertNull(fetchedCar1);
+//    }
+//    @Test
+//    void should_return_null_when_fetch_given_used_ticket(){
+//        //given
+//        ParkingLot parkingLot = new ParkingLot();
+//        Car car = new Car();
+//        Ticket ticket = parkingLot.park(car);
+//        Car fetchedCar = parkingLot.fetch(ticket);
+//        //when
+//        Car hopeToFetchCar = parkingLot.fetch(ticket);
+//        //should
+//        assertNull(hopeToFetchCar);
+//    }
     @Test
     void should_return_null_when_park_given_full_parking_lot(){
         //given
@@ -85,6 +85,19 @@ public class ParkingLotTest {
         //should
         Exception exception = assertThrows(UnrecognizedTicketException.class,
                 () -> parkingLot.fetch(unrecognizedTicket));
+        assertEquals("Unrecognized parking ticket.",exception.getMessage());
+    }
+    @Test
+    void should_return_exception_when_fetch_given_used_ticket(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        Ticket usedTicket = parkingLot.park(car);
+        parkingLot.fetch(usedTicket);
+        //when
+        //should
+        Exception exception = assertThrows(UnrecognizedTicketException.class,
+                () -> parkingLot.fetch(usedTicket));
         assertEquals("Unrecognized parking ticket.",exception.getMessage());
     }
 }
