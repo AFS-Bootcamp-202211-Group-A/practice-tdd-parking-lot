@@ -100,7 +100,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_ticket_when_10_car_parked_given_parking_lot_init_to_11_space() {
+    public void should_return_ticket_when_10_car_parked_and_park_new_car_given_parking_lot_init_to_11_space() {
         //given
         ParkingLot parkingLot = new ParkingLot(11);
 
