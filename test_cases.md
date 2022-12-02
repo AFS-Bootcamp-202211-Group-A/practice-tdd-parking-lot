@@ -14,6 +14,7 @@ Given two parked car,
 When fetch car.
 Return correct car
 
+''' Replaced by [Story 2] Case 7,8,9 
 Case 4 - 
 Given a wrong ticket, 
 When fetch car, 
@@ -28,6 +29,7 @@ Case 6 -
 Given a full parking lot, and a car, 
 When park the car, 
 Return null ticket
+'''
 
 [Story 2]
 Case 7 -
