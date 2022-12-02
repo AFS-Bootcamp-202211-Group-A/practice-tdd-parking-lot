@@ -1,22 +1,29 @@
 package com.parkinglot;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StandardParkingBoy {
-    private ParkingLot firstParkingLot;
-    private ParkingLot secondParkingLot;
+    private List<ParkingLot> parkingLotList = new ArrayList<>();
 
     public StandardParkingBoy(ParkingLot firstParkingLot){
-        this.firstParkingLot = firstParkingLot;
+        parkingLotList.add(firstParkingLot);
     }
-    public StandardParkingBoy(ParkingLot firstParkingLot,ParkingLot secondParkingLot){
-        this.firstParkingLot = firstParkingLot;
-        this.secondParkingLot = secondParkingLot;
+
+    public StandardParkingBoy(List<ParkingLot> parkingLotList) {
+        this.parkingLotList = parkingLotList;
     }
+
     public Ticket park(Car car) {
-        if (firstParkingLot.isFull()&& secondParkingLot!= null) {
-            return this.secondParkingLot.park(car);
+        try {
+            ParkingLot firstNotFullParkingLot = parkingLotList.stream()
+                    .filter(parkingLot -> !parkingLot.isFull())
+                    .findFirst().get();
+            return firstNotFullParkingLot.park(car);
+        } catch (Exception e) {
+            throw new NoAvailablePositionException();
         }
-        return this.firstParkingLot.park(car);
 
     }
 

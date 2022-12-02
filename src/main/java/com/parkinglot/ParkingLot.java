@@ -14,9 +14,6 @@ public class ParkingLot {
     private Map<Ticket, Car> parkedPosition = new HashMap<>();
 
     public Ticket park(Car car) {
-        if (isFull()) {
-            throw new NoAvailablePositionException();
-        }
         Ticket ticket = new Ticket(this);
         parkedPosition.put(ticket, car);
         return ticket;

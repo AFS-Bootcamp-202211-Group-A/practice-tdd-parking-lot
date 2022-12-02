@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
@@ -95,23 +98,26 @@ public class ParkingBoyTest {
     @Test
     void should_park_first_parking_lot_when_park_given_parking_boy_and_2_available_parking_lots() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot(10);
-        ParkingLot secondParkingLot = new ParkingLot(10);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(firstParkingLot,secondParkingLot);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(10));
+        parkingLotList.add(new ParkingLot(10));
+
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLotList);
         Car car = new Car();
         //when
 
         ParkingLot selectedParkingLot =  parkingBoy.park(car).getSelectedParkingLot();
         //then
-        assertEquals(selectedParkingLot,firstParkingLot);
+        assertEquals(selectedParkingLot,parkingLotList.get(0));
     }
 
     @Test
     void should_park_at_second_parkinglot_when_park_given_first_parkinglot_full_and_standard_parking_boy() {
         //given
-        ParkingLot firstParkingLot = new ParkingLot(1);
-        ParkingLot secondParkingLot = new ParkingLot(10);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(firstParkingLot,secondParkingLot);
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        parkingLotList.add(new ParkingLot(1));
+        parkingLotList.add(new ParkingLot(10));
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLotList);
 
         Car dummyCar = new Car();
         parkingBoy.park(dummyCar);
@@ -120,26 +126,11 @@ public class ParkingBoyTest {
         //when
         ParkingLot selectedParkingLot =  parkingBoy.park(car).getSelectedParkingLot();
         //then
-        assertEquals(selectedParkingLot,secondParkingLot);
+        assertEquals(selectedParkingLot,parkingLotList.get(1));
     }
 
-    @Test
-    void should_return_right_car_with_each_ticket_when_fetch_the_car_twice_given_2_parkinglots_and_both_parked_car_and_two_ticket() {
-        //given
-        ParkingLot firstParkingLot = new ParkingLot(1);
-        ParkingLot secondParkingLot = new ParkingLot(10);
-        StandardParkingBoy parkingBoy = new StandardParkingBoy(firstParkingLot,secondParkingLot);
-        Car aliceCar = new Car();
-        Car bobCar = new Car();
-        Ticket aliceTicket = parkingBoy.park(aliceCar);
-        Ticket bobTicket = parkingBoy.park(bobCar);
-        //when
-        Car aliceFetchedCar = parkingBoy.fetch(aliceTicket);
-        Car bobFetchedCar = parkingBoy.fetch(bobTicket);
-        //then
-        assertEquals(aliceCar, aliceFetchedCar);
-        assertEquals(bobCar, bobFetchedCar);
-    }
+ 
+
 
 
 }
