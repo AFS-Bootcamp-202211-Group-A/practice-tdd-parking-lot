@@ -12,18 +12,18 @@ public class ParkingLot {
     }
     private Map<Ticket, Car> parkedPosition = new HashMap<>();
 
-    public Ticket park(Car car) {
-        if (isNotFull()) {
-            Ticket ticket = new Ticket();
-            parkedPosition.put(ticket, car);
-            return ticket;
+    public Ticket park(Car car) throws NoAvailablePositionException{
+        if (isFull()) {
+            throw new NoAvailablePositionException();
         }
-        return null;
+        Ticket ticket = new Ticket();
+        parkedPosition.put(ticket, car);
+        return ticket;
 
     }
 
-    private boolean isNotFull() {
-        return parkedPosition.size() < capacity;
+    private boolean isFull() {
+        return parkedPosition.size() >= capacity;
     }
 
     public Car fetch(Ticket ticket) throws UnrecognizedTicketException {
