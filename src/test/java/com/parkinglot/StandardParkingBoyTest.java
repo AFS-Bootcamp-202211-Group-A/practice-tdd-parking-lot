@@ -77,6 +77,23 @@ public class StandardParkingBoyTest {
         assertEquals("Unrecognised Parking Ticket", unrecognisedTicketException.getMessage());
     }
 
+    @Test
+    public void should_return_ticket_when_10_car_parked_and_park_new_car_given_parking_lot_init_to_11_space() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(11);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
+
+        //when
+        for (int i = 0; i < 10; i++) {
+            parkingBoy.park(new Car());
+        }
+
+        Ticket ticket = parkingBoy.park(new Car());
+
+        //then
+        assertNotNull(ticket);
+    }
+
 
 
 }
