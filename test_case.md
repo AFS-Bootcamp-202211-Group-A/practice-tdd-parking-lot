@@ -28,3 +28,6 @@ Then return nothing.
 
 - Case 3 - Given a fulled parking lot and car, When park the car, Then return nothing and error message no available position.
 
+## Story 3
+---
+- Case 1
