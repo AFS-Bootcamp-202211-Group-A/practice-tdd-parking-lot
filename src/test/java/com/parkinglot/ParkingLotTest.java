@@ -44,7 +44,7 @@ public class ParkingLotTest {
         assertEquals(bobCar, bobFetchedCar);
     }
     @Test
-    void should_return_nothing_when_fetch_given_used_ticket() {
+    void should_return_exception_with_error_message_when_fetch_given_used_ticket() {
         // given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
