@@ -15,14 +15,14 @@ public class ParkingLot {
 
     public Ticket park(Car car) {
         if (parkedPosition.size() >= capacity) {
-            return null;
+            throw new NoAvailableSpaceException();
         }
         Ticket ticket = new Ticket();
         parkedPosition.put(ticket, car);
         return ticket;
     }
 
-    public Car fetch(Ticket ticket) throws UnrecognizedTicketException {
+    public Car fetch(Ticket ticket) {
         if (!isRecognizedTicket(ticket)) {
             throw new UnrecognizedTicketException();
         }

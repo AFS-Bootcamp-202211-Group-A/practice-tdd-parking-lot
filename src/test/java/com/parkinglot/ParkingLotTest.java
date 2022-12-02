@@ -57,7 +57,7 @@ public class ParkingLotTest {
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
     @Test
-    void should_return_nothing_when_park_given_full_parking_with_default_capacity() {
+    void should_return_exception_with_error_message_when_park_given_full_parking_with_default_capacity() {
         // given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
@@ -65,12 +65,14 @@ public class ParkingLotTest {
             parkingLot.park(car);
         }
         // when
-        Ticket ticket = parkingLot.park(car);
+
         // then
-        assertNull(ticket);
+        Exception exception = assertThrows(NoAvailableSpaceException.class,
+                () -> parkingLot.park(car));
+        assertEquals("No available position.", exception.getMessage());
     }
     @Test
-    void should_return_nothing_when_park_given_full_parking_with_3_capacity() {
+    void should_return_exception_with_error_message_when_park_given_full_parking_with_3_capacity() {
         // given
         int capacity = 3;
         ParkingLot parkingLot = new ParkingLot(capacity);
@@ -79,9 +81,11 @@ public class ParkingLotTest {
             parkingLot.park(car);
         }
         // when
-        Ticket ticket = parkingLot.park(car);
+
         // then
-        assertNull(ticket);
+        Exception exception = assertThrows(NoAvailableSpaceException.class,
+                () -> parkingLot.park(car));
+        assertEquals("No available position.", exception.getMessage());
     }
     @Test
     void should_return_exception_with_error_message_when_fetch_given_unrecognized_ticket() {
