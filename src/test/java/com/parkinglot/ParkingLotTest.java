@@ -78,4 +78,18 @@ public class ParkingLotTest {
         // then
         assertNull(ticket);
     }
+    @Test
+    void should_return_nothing_when_park_given_full_parking_with_3_capacity() {
+        // given
+        int capacity = 3;
+        ParkingLot parkingLot = new ParkingLot(capacity);
+        Car car = new Car();
+        for (int i=0; i<capacity; ++i) {
+            parkingLot.park(car);
+        }
+        // when
+        Ticket ticket = parkingLot.park(car);
+        // then
+        assertNull(ticket);
+    }
 }
