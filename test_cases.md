@@ -33,3 +33,13 @@ Story 1
     Given the parking slot has reached its capacity, 
     When park the car, 
     Then should not return any tickets.
+
+[] Case 8 -
+    Given a wrong parking ticket,
+    When pass the parking ticket,
+    Then should throw exception with error msg "Unrecognized packing ticket".
+
+[] Case 9 -
+    Given the parking slot has reached its capacity,
+    When park the car,
+    Then should throw exception with error msg "No available position".

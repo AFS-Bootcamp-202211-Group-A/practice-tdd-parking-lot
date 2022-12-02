@@ -27,9 +27,14 @@ public class ParkingLot {
         return ticketCarMap.size() >= capacity;
     }
 
-    public Car fetch(Ticket ticket) {
+    public Car fetch(Ticket ticket) throws UnrecognizedTicketException{
 
-        return ticketCarMap.remove(ticket);
+        Car fetchedCar = ticketCarMap.remove(ticket);
+        if(isNull(fetchedCar)){
+            throw new UnrecognizedTicketException();
+
+        }
+        return fetchedCar;
     }
 
 
