@@ -23,7 +23,7 @@ public class ParkingLot {
 
     }
 
-    private boolean isFull() {
+    public boolean isFull() {
         return parkedPosition.size() >= capacity;
     }
 

@@ -106,4 +106,24 @@ public class ParkingBoyTest {
         assertEquals(selectedParkingLot,firstParkingLot);
     }
 
+    @Test
+    void should_park_at_second_parkinglot_when_park_given_first_parkinglot_full_and_standard_parking_boy() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(10);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(firstParkingLot,secondParkingLot);
+
+        Car dummyCar = new Car();
+        parkingBoy.park(dummyCar);
+
+        Car car = new Car();
+        //when
+        ParkingLot selectedParkingLot =  parkingBoy.park(car).getSelectedParkingLot();
+        //then
+        assertEquals(selectedParkingLot,secondParkingLot);
+    }
+
+
+
+
 }

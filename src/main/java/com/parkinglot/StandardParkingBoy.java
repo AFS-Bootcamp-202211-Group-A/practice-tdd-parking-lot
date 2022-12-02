@@ -13,7 +13,11 @@ public class StandardParkingBoy {
         this.secondParkingLot = secondParkingLot;
     }
     public Ticket park(Car car) {
+        if (firstParkingLot.isFull()&& secondParkingLot!= null) {
+            return this.secondParkingLot.park(car);
+        }
         return this.firstParkingLot.park(car);
+
     }
 
     public Car fetch(Ticket ticket) {
