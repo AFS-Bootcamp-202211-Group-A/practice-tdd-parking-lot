@@ -12,6 +12,8 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        return parkedPosition.get(ticket);
+        Car returnCar = parkedPosition.get(ticket);
+        parkedPosition.remove(ticket);
+        return returnCar;
     }
 }

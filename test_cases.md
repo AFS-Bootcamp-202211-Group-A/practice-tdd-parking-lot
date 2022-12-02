@@ -15,12 +15,12 @@
 - When fetch the car twice,
 - Then return the right car with each ticket
 
-[ ] Case 4 
+[x] Case 4 
 - Given a parking lot, and a wrong parking ticket, 
 - When fetch the car, 
 - Then return nothing.
 
-[ ] Case 5 
+[x] Case 5 
 - Given a parking lot, and a used parking ticket,
 - When fetch the car,
 - Then return nothing.
