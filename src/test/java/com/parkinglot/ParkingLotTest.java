@@ -2,6 +2,8 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.rmi.UnexpectedException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -42,18 +44,6 @@ public class ParkingLotTest {
         assertEquals(bobCar, bobFetchedCar);
     }
     @Test
-    void should_return_nothing_when_fetch_given_wrong_ticket() {
-        // given
-        ParkingLot parkingLot = new ParkingLot();
-        Car aliceCar = new Car();
-        parkingLot.park(aliceCar);
-        Ticket bobTicket = new Ticket();
-        // when
-        Car fetchedCar = parkingLot.fetch(bobTicket);
-        // then
-        assertNull(fetchedCar);
-    }
-    @Test
     void should_return_nothing_when_fetch_given_used_ticket() {
         // given
         ParkingLot parkingLot = new ParkingLot();
@@ -61,9 +51,10 @@ public class ParkingLotTest {
         Ticket ticket = parkingLot.park(car);
         // when
         parkingLot.fetch(ticket);
-        Car newFetchedCar = parkingLot.fetch(ticket);
         // then
-        assertNull(newFetchedCar);
+        Exception exception = assertThrows(UnrecognizedTicketException.class,
+                () -> parkingLot.fetch(ticket));
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
     @Test
     void should_return_nothing_when_park_given_full_parking_with_default_capacity() {
@@ -91,5 +82,17 @@ public class ParkingLotTest {
         Ticket ticket = parkingLot.park(car);
         // then
         assertNull(ticket);
+    }
+    @Test
+    void should_return_exception_with_error_message_when_fetch_given_unrecognized_ticket() {
+        // given
+        ParkingLot parkingLot = new ParkingLot();
+        Ticket unrecognizedParkingTicket = new Ticket();
+        // when
+
+        // then
+        Exception exception = assertThrows(UnrecognizedTicketException.class,
+                () -> parkingLot.fetch(unrecognizedParkingTicket));
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 }

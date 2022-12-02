@@ -22,9 +22,16 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car fetch(Ticket ticket) {
+    public Car fetch(Ticket ticket) throws UnrecognizedTicketException {
+        if (!isRecognizedTicket(ticket)) {
+            throw new UnrecognizedTicketException();
+        }
         final Car fetchedCar = parkedPosition.get(ticket);
         parkedPosition.remove(ticket);
         return fetchedCar;
+    }
+
+    private boolean isRecognizedTicket(Ticket ticket) {
+        return parkedPosition.containsKey(ticket);
     }
 }
