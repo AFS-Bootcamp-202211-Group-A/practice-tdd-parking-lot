@@ -8,9 +8,10 @@
 ---
 - Case 4 - Given a parking lot, and a wrong ticket, When fetch the car with wrong ticket,
 Then return nothing.
----
-- Case 5 - Given a parking lot, When fetch the car without ticket,
+
+- Case 5(could be skipped) - Given a parking lot, When fetch the car without ticket,
 Then return nothing.
+---
 - Case 6 - Given a parking lot, and a used ticket, When fetch the car with used ticket,
 Then return nothing.
 --- 
