@@ -211,5 +211,21 @@ public class StandardParkingBoyTest {
         assertEquals("Unrecognised Parking Ticket", unrecognisedTicketException.getMessage());
     }
 
+    @Test
+    public void should_get_error_message_when_park_car_given_2_lots_filled() {
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(1));
+        parkingLots.add(new ParkingLot(1));
+
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLots);
+
+        Exception parkingLotFullException = assertThrows(ParkingLotFullException.class, ()->{
+            for (int i = 0; i < 3; i++) {
+                parkingBoy.park(new Car());
+            }
+        });
+        assertEquals("No available position.", parkingLotFullException.getMessage());
+    }
+
 
 }
