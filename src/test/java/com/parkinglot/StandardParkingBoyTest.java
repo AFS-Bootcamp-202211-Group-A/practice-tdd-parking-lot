@@ -28,7 +28,6 @@ public class StandardParkingBoyTest {
         // then
         assertEquals(car, fetchedCar);
     }
-
     @Test
     void should_return_right_car_when_fetch_twice_given_a_parking_lot_two_parked_car_and_two_ticket() {
         // given
@@ -45,7 +44,6 @@ public class StandardParkingBoyTest {
         assertEquals(aliceCar, aliceFetchedCar);
         assertEquals(bobCar, bobFetchedCar);
     }
-
     @Test
     void should_return_exception_with_error_message_when_fetch_given_a_parking_lot_and_a_used_ticket() {
         // given
@@ -60,7 +58,6 @@ public class StandardParkingBoyTest {
                 () -> standardParkingBoy.fetch(ticket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
-
     @Test
     void should_return_exception_with_error_message_when_park_given_full_parking_with_default_capacity() {
         // given
@@ -77,7 +74,6 @@ public class StandardParkingBoyTest {
                 () -> standardParkingBoy.park(car));
         assertEquals("No available position.", exception.getMessage());
     }
-
     @Test
     void should_return_exception_with_error_message_when_park_given_full_parking_with_3_capacity() {
         // given
@@ -95,7 +91,6 @@ public class StandardParkingBoyTest {
                 () -> standardParkingBoy.park(car));
         assertEquals("No available position.", exception.getMessage());
     }
-
     @Test
     void should_return_exception_with_error_message_when_fetch_given_a_parking_lot_and_a_unrecognized_ticket() {
         // given
