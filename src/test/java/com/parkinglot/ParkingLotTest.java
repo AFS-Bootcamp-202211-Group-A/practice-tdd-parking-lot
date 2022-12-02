@@ -53,7 +53,20 @@ class ParkingLotTest {
 
     }
 
+    @Test
+    public void should_return_null_when_pass_the_wrong_ticket_given_wrong_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+        Ticket dummyTicket = new Ticket();
 
+        //when
+        Car fetchedCar = parkingLot.fetch(dummyTicket);
+
+        //then
+        assertEquals(null, fetchedCar);
+
+    }
 
 
 }

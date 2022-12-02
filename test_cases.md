@@ -10,31 +10,26 @@ Story 1
     Then return the corresponding car.
 
 [] Case 3 - 
-    Given a lot of customers park their cars, 
-    When park their cars, 
-    Then return corresponding tickets.
-
-[] Case 4 - 
     Given customers receives their corresponding tickets, 
     When pass their parking tickets, 
     Then return corresponding cars.
 
-[] Case 5 - 
+[] Case 4 - 
     Given a wrong parking ticket, 
     When pass the parking ticket, 
     Then should not return car.
 
-[] Case 6 - 
+[] Case 5 - 
     Given no ticket, 
     When pass the parking ticket, 
     Then should not return car.
 
-[] Case 7 - 
+[] Case 6 - 
     Given a used ticket, 
     When pass the parking ticket, 
     Then should not return car.
 
-[] Case 8 - 
+[] Case 7 - 
     Given the parking slot has reached its capacity, 
     When park the car, 
     Then should not return any tickets.
