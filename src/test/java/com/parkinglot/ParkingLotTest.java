@@ -46,8 +46,7 @@ public class ParkingLotTest {
         // given
         ParkingLot parkingLot = new ParkingLot();
         Car aliceCar = new Car();
-        Car bobCar = new Car();
-        Ticket aliceTicket = parkingLot.park(aliceCar);
+        parkingLot.park(aliceCar);
         Ticket bobTicket = new Ticket();
         // when
         Car fetchedCar = parkingLot.fetch(bobTicket);
@@ -61,18 +60,18 @@ public class ParkingLotTest {
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
         // when
-        Car fetchedCar = parkingLot.fetch(ticket);
+        parkingLot.fetch(ticket);
         Car newFetchedCar = parkingLot.fetch(ticket);
         // then
         assertNull(newFetchedCar);
     }
     @Test
-    void should_return_nothing_when_park_given_full_parking() {
+    void should_return_nothing_when_park_given_full_parking_with_default_capacity() {
         // given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
         for (int i=0; i<10; ++i) {
-            parkingLot.park(new Car());
+            parkingLot.park(car);
         }
         // when
         Ticket ticket = parkingLot.park(car);
