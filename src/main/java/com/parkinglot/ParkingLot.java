@@ -6,7 +6,14 @@ import java.util.Map;
 public class ParkingLot {
 
     private final Map<Ticket, Car> parkedCars = new HashMap();
-    private static int parkingSpaces = 10;
+    private int parkingSpaces = 10;
+
+    public ParkingLot() {
+
+    }
+    public ParkingLot(int capacity) {
+        this.parkingSpaces = capacity;
+    }
 
     public Ticket park(Car car) {
         if (parkingSpaces == 0){
@@ -26,4 +33,5 @@ public class ParkingLot {
         }
         return carparked;
     }
+
 }

@@ -98,4 +98,20 @@ public class ParkingLotTest {
         //then
         assertNull(ticket);
     }
+
+    @Test
+    public void should_return_ticket_when_10_car_parked_given_parking_lot_init_to_11_space() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(11);
+
+        //when
+        for (int i = 0; i < 10; i++) {
+            parkingLot.park(new Car());
+        }
+
+        Ticket ticket = parkingLot.park(new Car());
+
+        //then
+        assertNotNull(ticket);
+    }
 }
