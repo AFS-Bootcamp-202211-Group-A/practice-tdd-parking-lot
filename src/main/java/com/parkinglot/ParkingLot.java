@@ -33,4 +33,12 @@ public class ParkingLot {
         return parkedCars.remove(ticket);
     }
 
+    public boolean isNotFull(){
+        return parkedCars.size()<parkingSpaces;
+    }
+
+    public boolean hasCar(Ticket ticket){
+        return parkedCars.containsKey(ticket);
+    }
+
 }
