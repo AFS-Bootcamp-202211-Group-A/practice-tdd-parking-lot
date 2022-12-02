@@ -108,6 +108,22 @@ public class StandardParkingBoyTest {
 
     }
 
+    @Test
+    public void should_error_message_when_10_car_parked_given_parking_lot_full() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
 
+        //when
+        for (int i = 0; i < 10; i++) {
+            parkingBoy.park(new Car());
+        }
+
+        Exception parkingLotFullException = assertThrows(ParkingLotFullException.class, ()->{
+            parkingBoy.park(new Car());
+        });
+        assertEquals("No available position.", parkingLotFullException.getMessage());
+
+    }
 
 }
