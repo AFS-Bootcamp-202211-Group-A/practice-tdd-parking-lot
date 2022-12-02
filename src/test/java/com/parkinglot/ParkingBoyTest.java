@@ -35,7 +35,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_the_corresponding_car_when_pass_the_corresponding_valid_ticket_given_a_valid_ticket() {
+    public void should_return_the_corresponding_car_when_pass_the_corresponding_valid_ticket_given_a_valid_ticket_and_a_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car1 = new Car();
@@ -55,7 +55,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_exception_with_error_message_when_pass_the_wrong_ticket_given_wrong_ticket() {
+    public void should_return_exception_with_error_message_when_pass_the_wrong_ticket_given_wrong_ticket_and_a_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
@@ -72,7 +72,7 @@ class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_exception_with_error_message_when_pass_used_ticket_given_used_ticket() {
+    public void should_return_exception_with_error_message_when_pass_used_ticket_given_used_ticket_and_a_parking_boy() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
@@ -86,6 +86,21 @@ class ParkingBoyTest {
         Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingBoy.fetch(ticket));
         assertEquals("Unrecognized packing ticket", exception.getMessage());
 
+    }
+
+    @Test
+    public void should_return_exception_with_error_message_when_pass_no_ticket_given_no_ticket_and_a_parking_boy() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car car = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Ticket ticket = parkingBoy.park(car);
+
+        //when
+
+        //then
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingBoy.fetch(null));
+        assertEquals("Unrecognized packing ticket", exception.getMessage());
     }
 
 
