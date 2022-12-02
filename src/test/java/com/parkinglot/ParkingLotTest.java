@@ -10,7 +10,7 @@ class ParkingLotTest {
     @Test
     void should_return_a_parking_ticket_when_park_given_a_car(){
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
 
         //when
@@ -23,7 +23,7 @@ class ParkingLotTest {
     @Test
     void should_return_a_car_when_pass_a_valid_ticket_given_a_valid_ticket(){
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
 
@@ -37,7 +37,7 @@ class ParkingLotTest {
     @Test
     public void should_return_the_corresponding_car_when_pass_the_corresponding_valid_ticket_given_a_valid_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car1 = new Car();
         Car car2 = new Car();
         Ticket ticket1 = parkingLot.park(car1);
@@ -56,7 +56,7 @@ class ParkingLotTest {
     @Test
     public void should_return_null_when_pass_the_wrong_ticket_given_wrong_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
         Ticket dummyTicket = new Ticket();
@@ -72,7 +72,7 @@ class ParkingLotTest {
     @Test
     public void should_return_null_when_pass_no_ticket_given_no_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
 
@@ -86,7 +86,7 @@ class ParkingLotTest {
     @Test
     public void should_return_null_when_pass_used_ticket_given_used_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
         Car fetchedCar = parkingLot.fetch(ticket);
@@ -102,7 +102,7 @@ class ParkingLotTest {
     @Test
     public void should_return_null_when_park_the_car_given_the_parking_lot_is_full(){
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car1 = new Car();
         Car car2 = new Car();
         Car car3 = new Car();

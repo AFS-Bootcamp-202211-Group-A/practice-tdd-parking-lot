@@ -6,26 +6,25 @@ import static java.util.Objects.isNull;
 
 public class ParkingLot {
 
-    HashMap<Ticket, Car> ticketCarMap = new HashMap<>();
-    private static final int CAPACITY = 10;
+    private HashMap<Ticket, Car> ticketCarMap = new HashMap<>();
+    private static int capacity = 10;
 
+    public ParkingLot(int capacity){
+        this.capacity = capacity;
+    }
     public Ticket park(Car car) {
-        if (ticketCarMap.size() >= CAPACITY) {
+        if (ticketCarMap.size() >= capacity) {
             return null;
-        } else {
-            Ticket ticket = new Ticket();
-            ticketCarMap.put(ticket, car);
-            return ticket;
         }
+        Ticket ticket = new Ticket();
+        ticketCarMap.put(ticket, car);
+        return ticket;
+
     }
 
     public Car fetch(Ticket ticket) {
 
-        Car fetchedCar = ticketCarMap.getOrDefault(ticket, null);
-        if (!isNull(fetchedCar)) {
-            ticketCarMap.remove(ticket);
-        }
-        return fetchedCar;
+        return ticketCarMap.remove(ticket);
     }
 
 
