@@ -1,12 +1,12 @@
 # Stroy1
 
-[] Case 1
+[x] Case 1
 - Given a parking lot, and a car,
 - When park the car,
 - Then return a parking ticket.
 
 [] Case 2
-- Given a parking lot with two cars, a correspond ticket,
+- Given a parking lot with a parked car, a correspond ticket,
 - When fetch a car,
 - Then return a correspond car
 
