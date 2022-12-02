@@ -28,6 +28,14 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(Ticket ticket) {
-        return this.parkingLots.get(0).fetch(ticket);
+        ParkingLot availableParkingLot = parkingLots
+                .stream()
+                .filter(parkingLot -> !parkingLot.isWrongTicket(ticket))
+                .findFirst()
+                .orElse(null);
+        if(availableParkingLot == null) {
+            throw new UnrecognizedTicketException();
+        }
+        return availableParkingLot.fetch(ticket);
     }
 }

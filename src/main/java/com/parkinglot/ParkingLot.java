@@ -32,7 +32,7 @@ public class ParkingLot {
         return returnCar;
     }
 
-    private boolean isWrongTicket(Ticket ticket) {
+    public boolean isWrongTicket(Ticket ticket) {
         return !parkedPosition.containsKey(ticket);
     }
 
