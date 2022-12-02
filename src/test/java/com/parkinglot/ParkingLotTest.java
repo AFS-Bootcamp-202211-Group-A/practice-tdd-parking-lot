@@ -99,5 +99,38 @@ class ParkingLotTest {
 
     }
 
+    @Test
+    public void should_return_null_when_park_the_car_given_the_parking_lot_is_full(){
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        Car car4 = new Car();
+        Car car5 = new Car();
+        Car car6 = new Car();
+        Car car7 = new Car();
+        Car car8 = new Car();
+        Car car9 = new Car();
+        Car car10 = new Car();
+        Car car11 = new Car();
+        parkingLot.park(car1);
+        parkingLot.park(car2);
+        parkingLot.park(car3);
+        parkingLot.park(car4);
+        parkingLot.park(car5);
+        parkingLot.park(car6);
+        parkingLot.park(car7);
+        parkingLot.park(car8);
+        parkingLot.park(car9);
+        parkingLot.park(car10);
+
+        //when
+        Ticket ticket11 = parkingLot.park(car11);
+
+        //then
+        assertNull(ticket11);
+    }
+
 
 }
