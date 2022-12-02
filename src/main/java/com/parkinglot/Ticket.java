@@ -1,7 +1,7 @@
 package com.parkinglot;
 
 public class Ticket {
-    ParkingLot selectedParkingLot;
+    private ParkingLot selectedParkingLot;
     public Ticket(){
 
     }

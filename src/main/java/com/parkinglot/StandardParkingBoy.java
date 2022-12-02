@@ -21,6 +21,10 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(Ticket ticket) {
-        return this.firstParkingLot.fetch(ticket);
+        ParkingLot parkingLotOfTicket = ticket.getSelectedParkingLot();
+        if (parkingLotOfTicket == null){
+            throw new UnrecognizedTicketException();
+        }
+        return parkingLotOfTicket.fetch(ticket);
     }
 }
