@@ -2,10 +2,12 @@ package com.parkinglot;
 
 public class Ticket {
     private ParkingLot selectedParkingLot;
-    public Ticket(){
+
+    public Ticket() {
 
     }
-    public Ticket(ParkingLot parkingLot){
+
+    public Ticket(ParkingLot parkingLot) {
         this.selectedParkingLot = parkingLot;
     }
 

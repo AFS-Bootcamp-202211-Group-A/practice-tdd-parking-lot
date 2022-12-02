@@ -13,7 +13,7 @@ public class SmartParkingBoy {
     public Ticket park(Car car) {
         try {
             ParkingLot selectedParkingLot = parkingLotList.stream()
-                    .reduce(((parkingLot, parkingLot2) -> parkingLot.getFreePositions()>=parkingLot2.getFreePositions()? parkingLot:parkingLot2))
+                    .reduce(((parkingLot, parkingLot2) -> parkingLot.getFreePositions() >= parkingLot2.getFreePositions() ? parkingLot : parkingLot2))
                     .get();
             return selectedParkingLot.park(car);
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class SmartParkingBoy {
 
     public Car fetch(Ticket ticket) {
         ParkingLot parkingLotOfTicket = ticket.getSelectedParkingLot();
-        if (parkingLotOfTicket == null){
+        if (parkingLotOfTicket == null) {
             throw new UnrecognizedTicketException();
         }
         return parkingLotOfTicket.fetch(ticket);

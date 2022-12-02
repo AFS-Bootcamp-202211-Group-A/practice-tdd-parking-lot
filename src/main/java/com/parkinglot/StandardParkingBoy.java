@@ -7,7 +7,7 @@ import java.util.List;
 public class StandardParkingBoy {
     private List<ParkingLot> parkingLotList = new ArrayList<>();
 
-    public StandardParkingBoy(ParkingLot firstParkingLot){
+    public StandardParkingBoy(ParkingLot firstParkingLot) {
         parkingLotList.add(firstParkingLot);
     }
 
@@ -29,7 +29,7 @@ public class StandardParkingBoy {
 
     public Car fetch(Ticket ticket) {
         ParkingLot parkingLotOfTicket = ticket.getSelectedParkingLot();
-        if (parkingLotOfTicket == null){
+        if (parkingLotOfTicket == null) {
             throw new UnrecognizedTicketException();
         }
         return parkingLotOfTicket.fetch(ticket);

@@ -95,7 +95,7 @@ public class SmartParkingBoyTest {
         SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLotList);
         Car car = new Car();
 
-        for (int i = 0; i < CAPACITY*parkingLotList.size(); i++) {
+        for (int i = 0; i < CAPACITY * parkingLotList.size(); i++) {
             Car dummyCar = new Car();
             parkingBoy.park(dummyCar);
         }
