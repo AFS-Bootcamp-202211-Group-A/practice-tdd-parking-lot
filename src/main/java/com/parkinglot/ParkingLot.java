@@ -26,11 +26,19 @@ public class ParkingLot {
         return parkedPosition.size() < capacity;
     }
 
-    public Car fetch(Ticket ticket) {
+    public Car fetch(Ticket ticket) throws UnrecognizedTicketException {
+        if (isUnrecognizedTicket(ticket)){
+            throw new UnrecognizedTicketException();
+        }
+
         Car foundCar = parkedPosition.get(ticket);
         if (foundCar != null) {
             parkedPosition.remove(ticket);
         }
         return foundCar;
+    }
+
+    private boolean isUnrecognizedTicket(Ticket ticket) {
+        return !parkedPosition.containsKey(ticket);
     }
 }

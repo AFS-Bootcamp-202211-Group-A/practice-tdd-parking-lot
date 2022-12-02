@@ -1,3 +1,4 @@
+## Story 1
 - Case 1 - Given a parking lot, and a car, When park the car, Then return a parking ticket.
 
 
@@ -17,3 +18,13 @@ Then return nothing.
 --- 
 - Case 7 - Given a fulled parking lot, and a car, When park a car in fulled parking lot,
 Then return nothing.
+
+## Story 2
+---
+- Case 1 - Given a parking lot and unrecognized ticket, When fetch the car, Then return nothing and error message unrecognized parking ticket.
+
+- Case 2 - Given a parking lot and used ticket, When fetch the car, Then return nothing and error message unrecognized parking ticket.
+---
+
+- Case 3 - Given a fulled parking lot and car, When park the car, Then return nothing and error message no available position.
+
