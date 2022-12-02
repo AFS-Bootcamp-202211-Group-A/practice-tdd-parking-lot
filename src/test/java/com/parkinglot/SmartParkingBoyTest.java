@@ -244,5 +244,19 @@ public class SmartParkingBoyTest {
 
         assertTrue(parkingLots.get(1).hasCar(ticket));
     }
+    @Test
+    public void should_park_to_first_parking_lot_when_car_park_given_1st_lots_with_more_space() {
+        //given
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        parkingLots.add(new ParkingLot(2));
+        parkingLots.add(new ParkingLot(1));
+        SmartParkingBoy parkingBoy = new SmartParkingBoy(parkingLots);
+
+        //when
+        Car car = new Car();
+        Ticket ticket = parkingBoy.park(car);
+
+        assertTrue(parkingLots.get(0).hasCar(ticket));
+    }
 
 }
