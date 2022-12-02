@@ -41,4 +41,7 @@ public class ParkingLot {
         return parkedCars.containsKey(ticket);
     }
 
+    public int getRemainingSpace() {
+        return parkingSpaces -parkedCars.size();
+    }
 }

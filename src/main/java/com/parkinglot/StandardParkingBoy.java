@@ -6,6 +6,10 @@ public class StandardParkingBoy {
 
     private ArrayList<ParkingLot> parkingLots = new ArrayList<>();
 
+    public ArrayList<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
+
     public StandardParkingBoy(ParkingLot parkingLot){
         this.parkingLots.add(parkingLot);
     }
