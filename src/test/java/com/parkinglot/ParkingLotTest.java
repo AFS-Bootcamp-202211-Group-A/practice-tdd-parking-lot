@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ParkingLotTest {
 
     @Test
-    void should_return_a_parking_ticket_when_park_given_a_car(){
+    void should_return_a_parking_ticket_when_park_given_a_car() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
@@ -21,7 +21,7 @@ class ParkingLotTest {
     }
 
     @Test
-    void should_return_a_car_when_pass_a_valid_ticket_given_a_valid_ticket(){
+    void should_return_a_car_when_pass_a_valid_ticket_given_a_valid_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
@@ -54,23 +54,6 @@ class ParkingLotTest {
     }
 
     @Test
-    public void should_return_null_when_park_the_car_given_the_parking_lot_is_full(){
-        //given
-        ParkingLot parkingLot = new ParkingLot(10);
-        for (int i = 0; i < 10 ; i++){
-            Car car = new Car();
-            parkingLot.park(car);
-        }
-        Car extraCar = new Car();
-
-        //when
-        Ticket ticket = parkingLot.park(extraCar);
-
-        //then
-        assertNull(ticket);
-    }
-
-    @Test
     public void should_return_exception_with_error_message_when_pass_the_wrong_ticket_given_wrong_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot(10);
@@ -81,7 +64,7 @@ class ParkingLotTest {
         //when
 
         //then
-        Exception exception = assertThrows(UnrecognizedTicketException.class, ()->parkingLot.fetch(dummyTicket));
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingLot.fetch(dummyTicket));
         assertEquals("Unrecognized packing ticket", exception.getMessage());
 
     }
@@ -97,7 +80,7 @@ class ParkingLotTest {
         //when
 
         //then
-        Exception exception = assertThrows(UnrecognizedTicketException.class, ()->parkingLot.fetch(ticket));
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingLot.fetch(ticket));
         assertEquals("Unrecognized packing ticket", exception.getMessage());
 
     }
@@ -112,11 +95,26 @@ class ParkingLotTest {
         //when
 
         //then
-        Exception exception = assertThrows(UnrecognizedTicketException.class, ()->parkingLot.fetch(null));
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkingLot.fetch(null));
         assertEquals("Unrecognized packing ticket", exception.getMessage());
     }
 
+    @Test
+    public void should_return_exception_with_error_message_when_park_the_car_given_the_parking_lot_is_full() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        for (int i = 0; i < 10; i++) {
+            Car car = new Car();
+            parkingLot.park(car);
+        }
+        Car extraCar = new Car();
 
+        //when
+
+        //then
+        Exception exception = assertThrows(UnavailableSlotException.class, () -> parkingLot.park(extraCar));
+        assertEquals("No available position", exception.getMessage());
+    }
 
 
 }
