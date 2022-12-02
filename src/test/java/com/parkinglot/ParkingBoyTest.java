@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingBoyTest {
@@ -120,6 +123,46 @@ class ParkingBoyTest {
         Exception exception = assertThrows(UnavailableSlotException.class, () -> parkingBoy.park(extraCar));
         assertEquals("No available position", exception.getMessage());
     }
+
+    @Test
+    public void should_return_two_tickets_when_park_the_car_given_two_parking_lot_two_cars_one_parking_boy() {
+        //given
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+
+
+        //when
+        Ticket ticket1 = parkingBoy.park(new Car());
+        Ticket ticket2 = parkingBoy.park(new Car());
+
+        //then
+        assertNotNull(ticket1);
+        assertNotNull(ticket2);
+
+
+    }
+
+//    @Test
+//    public void should_return_two_tickets_when_park_the_car_given_two_parking_lot_two_cars_one_parking_boy() {
+//        //given
+//        ParkingLot parkingLot1 = new ParkingLot(1);
+//        ParkingLot parkingLot2 = new ParkingLot(1);
+//        List<ParkingLot> parkingLots = Arrays.asList(parkingLot1, parkingLot2);
+//        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+//
+//
+//        //when
+//        Ticket ticket1 = parkingBoy.park(new Car());
+//        Ticket ticket2 = parkingBoy.park(new Car());
+//
+//        //then
+//        assertEquals(car1, fetchedCar1);
+//        assertEquals(car2, fetchedCar2);
+//
+//
+//    }
 
 
 }

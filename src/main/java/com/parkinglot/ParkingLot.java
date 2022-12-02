@@ -37,5 +37,11 @@ public class ParkingLot {
         return fetchedCar;
     }
 
+    public HashMap<Ticket, Car> getTicketCarMap() {
+        return ticketCarMap;
+    }
 
+    public static int getCapacity() {
+        return capacity;
+    }
 }

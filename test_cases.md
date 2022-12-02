@@ -62,3 +62,15 @@ Story 3
     Given customers receives their corresponding tickets,
     When pass their parking tickets,
     Then return corresponding cars.
+
+Story 4
+
+[] Case 1 -
+    Given two parking lot with capacity of one, two cars,
+    When park the car,
+    Then should return two parking tickets.
+
+[] Case 2 -
+    Given two valid parking ticket,
+    When pass the parking tickets,
+    Then return the corresponding cars.

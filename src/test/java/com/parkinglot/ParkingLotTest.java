@@ -2,6 +2,8 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -115,6 +117,7 @@ class ParkingLotTest {
         Exception exception = assertThrows(UnavailableSlotException.class, () -> parkingLot.park(extraCar));
         assertEquals("No available position", exception.getMessage());
     }
+
 
 
 }

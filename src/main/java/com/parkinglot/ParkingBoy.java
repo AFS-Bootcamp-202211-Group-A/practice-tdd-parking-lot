@@ -1,18 +1,31 @@
 package com.parkinglot;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class ParkingBoy {
 
-    ParkingLot parkingLot;
+    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+        parkingLots.add(parkingLot);
+    }
+
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots.addAll(parkingLots);
     }
 
     public Ticket park(Car car) {
-        return parkingLot.park(car);
+        for (ParkingLot parkingLot: parkingLots){
+            if(parkingLot.getTicketCarMap().size() < parkingLot.getCapacity()){
+                return parkingLot.park(car);
+            }
+        }
+        return null;
     }
 
     public Car fetch(Ticket ticket) {
-        return parkingLot.fetch(ticket);
+        return null;
     }
 }
