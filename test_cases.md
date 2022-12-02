@@ -5,15 +5,15 @@
 - When park the car,
 - Then return a parking ticket.
 
-[] Case 2
+[x] Case 2
 - Given a parking lot with a parked car, a correspond ticket,
 - When fetch a car,
 - Then return a correspond car
 
 [] Case 3
-- Given a ticket,
-- When fetch a car,
-- Then return a car
+- Given a parking lot with two parked cars,
+- When fetch the car twice,
+- Then return the right car with each ticket
 
 [] Case 4
 - Given a parking lot,a wrong ticket,
