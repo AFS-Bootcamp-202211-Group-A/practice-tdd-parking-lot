@@ -8,7 +8,7 @@ public class ParkingLotTest {
     @Test
     void should_return_ticket_when_park_given_car() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         //when
             Ticket ticket = parkingLot.park(car);
@@ -19,7 +19,7 @@ public class ParkingLotTest {
     @Test
     void should_return_car_when_fetch_given_parked_car_and_a_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
         //when
@@ -30,7 +30,7 @@ public class ParkingLotTest {
     @Test
     void should_return_right_car_when_fetch_twice_given_two_parked_cars_and_tickets() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car aliceCar = new Car();
         Car bobCar = new Car();
         Ticket aliceTicket = parkingLot.park(aliceCar);
@@ -45,7 +45,7 @@ public class ParkingLotTest {
     @Test
     void should_return_null_when_fetch_car_given_wrong_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car aliceCar = new Car();
         parkingLot.park(aliceCar);
         //when
@@ -56,7 +56,7 @@ public class ParkingLotTest {
     @Test
     void should_return_null_when_fetch_car_given_used_ticket() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car car = new Car();
         Ticket ticket = parkingLot.park(car);
         //when
@@ -68,10 +68,10 @@ public class ParkingLotTest {
     @Test
     void should_return_nothing_when_park_given_fulled_parking_lot_and_car() {
         //given
-        ParkingLot parkingLot = new ParkingLot();
+        final int CAPACITY = 10;
+        ParkingLot parkingLot = new ParkingLot(CAPACITY);
         Car car = new Car();
 
-        final int CAPACITY = 10;
         for (int i=0;i<CAPACITY;i++){
             Car dummyCar = new Car();
             parkingLot.park(dummyCar);
