@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
@@ -84,9 +87,12 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_park_given_two_parking_lot_and_car(){
         //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car = new Car();
         //when
         Ticket ticket = parkingBoy.park(car);
@@ -96,27 +102,33 @@ public class ParkingBoyTest {
     @Test
     void should_return_second_parking_lot_when_park_given_first_of_the_two_parking_lot_is_full_and_car(){
         //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(1);
-        parkingLot1.park(new Car());
         ParkingLot parkingLot2 = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        parkingLot1.park(new Car());
         Car car = new Car();
         //when
         Ticket ticket = parkingBoy.park(car);
         //should
-        assertEquals(parkingLot2,parkingBoy.getParkingLotPosition(ticket));
+        assertEquals(parkingLot2,ticket.getParkingLotOfTheTicket());
     }
     @Test
     //Case 19
     void should_return_car_when_park_given_two_parking_lot_and_two_car_are_in_different_parking_lot(){
         //given
-        ParkingLot parkingLot1 = new ParkingLot(1);
+        List<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car1 = new Car();
         parkingLot1.park(car1);
-        ParkingLot parkingLot2 = new ParkingLot();
         Car car2 = new Car();
         parkingLot2.park(car2);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
         Ticket ticket1 = parkingBoy.park(car1);
         Ticket ticket2 = parkingBoy.park(car2);
         //when
@@ -130,9 +142,12 @@ public class ParkingBoyTest {
     //case 20
     void should_return_exception_when_fetch_given_unrecognized_ticket_and_two_parking_lot(){
         //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Ticket unrecognizedTicket = new Ticket();
         //when
         //should
@@ -144,9 +159,12 @@ public class ParkingBoyTest {
     //case 21
     void should_return_exception_when_fetch_given_used_ticket_and_two_parking_lot(){
         //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot();
         ParkingLot parkingLot2 = new ParkingLot();
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car = new Car();
         Ticket usedTicket = parkingBoy.park(car);
         parkingBoy.fetch(usedTicket);
@@ -160,9 +178,12 @@ public class ParkingBoyTest {
     //case 22
     void should_return_exception_when_park_given_full_parking_lot_and_two_parking_slot(){
         //given
+        List<ParkingLot> parkingLots = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(1);
         ParkingLot parkingLot2 = new ParkingLot(1);
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLot1, parkingLot2);
+        parkingLots.add(parkingLot1);
+        parkingLots.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car = new Car();
         parkingBoy.park(new Car());
         parkingBoy.park(new Car());

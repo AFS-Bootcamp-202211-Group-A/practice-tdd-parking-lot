@@ -13,9 +13,9 @@ public class ParkingLot {
     }
     public Ticket park(Car car) {
         if(isFull()){
-            throw new parkingLotFullException("No available position.");
+            throw new parkingLotFullException();
         }
-        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket(this);
         parkedPosition.put(ticket, car);
         return ticket;
     }
@@ -25,7 +25,7 @@ public class ParkingLot {
 
     public Car fetch(Ticket ticket) {
         if(!parkedPosition.containsKey(ticket)){
-            throw new UnrecognizedTicketException("Unrecognized parking ticket.");
+            throw new UnrecognizedTicketException();
         }
         Car car = parkedPosition.get(ticket);
         parkedPosition.remove(ticket);

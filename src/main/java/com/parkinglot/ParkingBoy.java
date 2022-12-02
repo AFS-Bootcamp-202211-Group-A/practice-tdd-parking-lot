@@ -1,46 +1,44 @@
 package com.parkinglot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingBoy {
     private ParkingLot parkingLot1;
     private ParkingLot parkingLot2;
-    private final Map<Ticket, ParkingLot> ticketParkingLotPosition = new HashMap<>();
-    private final Map<Car,ParkingLot> carParkingLotPosition = new HashMap<>();
+    private List<ParkingLot> parkingLots = new ArrayList<>();
 
     public ParkingBoy(ParkingLot parkingLot) {
-        this.parkingLot1 = parkingLot;
+        //this.parkingLot1 = parkingLot;
+        this.parkingLots.add(parkingLot);
     }
 
-    public ParkingBoy(ParkingLot parkingLot1, ParkingLot parkingLot2) {
-        this.parkingLot1 = parkingLot1;
-        this.parkingLot2 = parkingLot2;
+    public ParkingBoy(List<ParkingLot> parkingLots) {
+        this.parkingLots=parkingLots;
     }
 
     public Ticket park(Car car) {
-        Ticket ticket;
-        if(this.parkingLot1.isFull() && parkingLot2!=null){
-            ticket = this.parkingLot2.park(car);
-            ticketParkingLotPosition.put(ticket,parkingLot2);
-            carParkingLotPosition.put(car,parkingLot2);
+        try{
+            ParkingLot theParkingLot = this.parkingLots
+                    .stream()
+                    .filter(parkingLot -> !parkingLot.isFull())
+                    .findFirst()
+                    .get();
+            return theParkingLot.park(car);
         }
-        else {
-            ticket = this.parkingLot1.park(car);
-            ticketParkingLotPosition.put(ticket,parkingLot1);
-            carParkingLotPosition.put(car,parkingLot1);
+        catch (Exception e){
+            throw new parkingLotFullException();
         }
-        return ticket;
     }
 
     public Car fetch(Ticket ticket) {
-        if(this.ticketParkingLotPosition.get(ticket) == null){
-            return this.parkingLot1.fetch(ticket);
+        try{
+            return ticket.getParkingLotOfTheTicket().fetch(ticket);
         }
-        return this.ticketParkingLotPosition.get(ticket).fetch(ticket);
-    }
-
-    public ParkingLot getParkingLotPosition(Ticket ticket) {
-        return this.ticketParkingLotPosition.get(ticket);
+        catch (Exception e){
+            throw new UnrecognizedTicketException();
+        }
     }
 }
