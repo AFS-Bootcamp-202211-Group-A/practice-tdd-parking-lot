@@ -34,5 +34,25 @@ class ParkingBoyTest {
         assertEquals(car, fetchedCar);
     }
 
+    @Test
+    public void should_return_the_corresponding_car_when_pass_the_corresponding_valid_ticket_given_a_valid_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot(10);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLot);
+        Ticket ticket1 = parkingBoy.park(car1);
+        Ticket ticket2 = parkingBoy.park(car2);
+
+        //when
+        Car fetchedCar1 = parkingBoy.fetch(ticket1);
+        Car fetchedCar2 = parkingBoy.fetch(ticket2);
+
+        //then
+        assertEquals(car1, fetchedCar1);
+        assertEquals(car2, fetchedCar2);
+
+    }
+
 
 }
