@@ -31,7 +31,7 @@ public class ParkingLot {
         return fetchedCar;
     }
 
-    private boolean isRecognizedTicket(Ticket ticket) {
+    public boolean isRecognizedTicket(Ticket ticket) {
         return parkedPosition.containsKey(ticket);
     }
 }

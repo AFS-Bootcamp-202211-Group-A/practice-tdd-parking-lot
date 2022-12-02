@@ -116,6 +116,6 @@ public class StandardParkingBoyTest {
         // when
         Ticket ticket = standardParkingBoy.park(car);
         // then
-        assertNotNull(ticket);
+        assertTrue(firstParkingLot.isRecognizedTicket(ticket));
     }
 }
