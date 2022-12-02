@@ -29,7 +29,7 @@ public class ParkingLot {
 
     public Car fetch(Ticket ticket)  {
         if(isWrongTicket(ticket)) {
-            throw new UnrecognizedTicketExceptioin();
+            throw new UnrecognizedTicketException();
         }
         Car returnCar = parkedPosition.get(ticket);
         parkedPosition.remove(ticket);
