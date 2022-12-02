@@ -31,11 +31,6 @@ public class ParkingLot {
         parkedPosition.remove(ticket);
         return car;
     }
-
-    public int getSize() {
-        return parkedPosition.size();
-    }
-
     public int getFreeSize() {
         return capacity - parkedPosition.size();
     }
