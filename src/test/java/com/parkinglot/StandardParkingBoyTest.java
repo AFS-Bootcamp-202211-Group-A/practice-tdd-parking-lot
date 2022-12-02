@@ -77,4 +77,22 @@ public class StandardParkingBoyTest {
                 () -> standardParkingBoy.park(car));
         assertEquals("No available position.", exception.getMessage());
     }
+
+    @Test
+    void should_return_exception_with_error_message_when_park_given_full_parking_with_3_capacity() {
+        // given
+        int capacity = 3;
+        ParkingLot parkingLot = new ParkingLot(capacity);
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLot);
+        for (int i=0; i<capacity; ++i) {
+            standardParkingBoy.park(car);
+        }
+        // when
+
+        // then
+        Exception exception = assertThrows(NoAvailableSpaceException.class,
+                () -> standardParkingBoy.park(car));
+        assertEquals("No available position.", exception.getMessage());
+    }
 }
