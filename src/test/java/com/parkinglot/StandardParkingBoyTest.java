@@ -2,6 +2,8 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StandardParkingBoyTest {
@@ -103,5 +105,17 @@ public class StandardParkingBoyTest {
         Exception exception = assertThrows(UnrecognizedTicketException.class,
                 () -> standardParkingBoy.fetch(unrecognizedParkingTicket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
+    }
+    @Test
+    void should_park_in_first_parking_lot_when_park_given_two_parking_lot_and_a_car() {
+        // given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        Car car = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(Arrays.asList(firstParkingLot, secondParkingLot));
+        // when
+        Ticket ticket = standardParkingBoy.park(car);
+        // then
+        assertNotNull(ticket);
     }
 }
