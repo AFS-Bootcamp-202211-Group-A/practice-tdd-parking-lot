@@ -58,10 +58,25 @@ class ParkingLotTest {
         //given
         ParkingLot parkingLot = new ParkingLot();
         Car car = new Car();
+        Ticket ticket = parkingLot.park(car);
         Ticket dummyTicket = new Ticket();
 
         //when
         Car fetchedCar = parkingLot.fetch(dummyTicket);
+
+        //then
+        assertEquals(null, fetchedCar);
+
+    }
+    
+    @Test
+    public void should_return_null_when_pass_no_ticket_given_no_ticket() {
+        //given
+        ParkingLot parkingLot = new ParkingLot();
+        Car car = new Car();
+
+        //when
+        Car fetchedCar = parkingLot.fetch(null);
 
         //then
         assertEquals(null, fetchedCar);
