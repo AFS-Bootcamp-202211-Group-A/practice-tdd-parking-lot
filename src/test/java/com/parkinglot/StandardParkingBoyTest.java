@@ -38,7 +38,7 @@ public class StandardParkingBoyTest {
     }
 
     @Test
-    public void should_return_2_parked_cars_when_2_cars_parked_given_parking_lot_and__2_corresponding_tickets() {
+    public void should_return_2_parked_cars_when_2_cars_parked_given_parking_lot_and_2_corresponding_tickets() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
@@ -58,7 +58,7 @@ public class StandardParkingBoyTest {
     }
 
     @Test
-    public void should_return_null_when_no_car_parked_given_parking_lot_and_used_ticket() {
+    public void should_return_error_message_when_no_car_parked_given_parking_lot_and_used_ticket() {
         //given
         ParkingLot parkingLot = new ParkingLot();
         StandardParkingBoy parkingBoy = new StandardParkingBoy(parkingLot);
