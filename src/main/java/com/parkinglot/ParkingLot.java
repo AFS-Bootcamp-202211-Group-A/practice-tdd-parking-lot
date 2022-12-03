@@ -9,6 +9,10 @@ public class ParkingLot {
     public ParkingLot() {
     }
 
+    public int getVacancy() {
+        return capacity - parkedPosition.size();
+    }
+
     public ParkingLot(int capacity) {
         this.capacity = capacity;
     }
