@@ -12,12 +12,16 @@ public class ParkingLot {
     }
 
     public Ticket park(Car car) {
-        if (parkedPosition.size() == capacity){
+        if (isFull()){
             return null;
         }
         Ticket ticket = new Ticket();
         parkedPosition.put(ticket, car);
         return ticket;
+    }
+
+    private boolean isFull() {
+        return parkedPosition.size() == capacity;
     }
 
     public Car fetch(Ticket ticket) {
