@@ -25,9 +25,16 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
+        if (unrecognizedTicket(ticket)){
+            throw new UnrecognizedTicketException();
+        }
         Car fetchedCar = parkedPosition.get(ticket);
         parkedPosition.remove(ticket);
         return fetchedCar;
+    }
+
+    private boolean unrecognizedTicket(Ticket ticket) {
+        return !parkedPosition.containsKey(ticket);
     }
 
 }

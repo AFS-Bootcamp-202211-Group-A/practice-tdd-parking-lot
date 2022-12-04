@@ -51,21 +51,21 @@ public class ParkinglotTest {
         assertEquals(car2, fetchedCar2);
     }
 
-    @Test
-    void should_return_nothing_when_fetch_given_a_parkinglot_and_a_wrong_parking_ticket() {
-        //given
-        ParkingLot parkinglot = new ParkingLot(2);
-        Ticket wrongTicket = new Ticket();
-
-        //when
-        Car fetchedCar = parkinglot.fetch(wrongTicket);
-
-        //then
-        assertNull(fetchedCar);
-    }
+//    @Test
+//    void should_return_nothing_when_fetch_given_a_parkinglot_and_a_wrong_parking_ticket() {
+//        //given
+//        ParkingLot parkinglot = new ParkingLot(2);
+//        Ticket wrongTicket = new Ticket();
+//
+//        //when
+//        Car fetchedCar = parkinglot.fetch(wrongTicket);
+//
+//        //then
+//        assertNull(fetchedCar);
+//    }
     
     @Test
-    void should_return_nothing_when_fetch_given_a_parkinglot_and_a_used_ticket() {
+    void should_return_exception_with_error_message_when_fetch_given_a_parkinglot_and_a_used_ticket() {
         //given
         ParkingLot parkinglot = new ParkingLot(2);
         Car car1 = new Car();
@@ -74,10 +74,10 @@ public class ParkinglotTest {
         Ticket usedTicket = ticket1;
 
         //when
-        Car fetchedCarByUsedTicket = parkinglot.fetch(usedTicket);
 
         //then
-        assertNull(fetchedCarByUsedTicket);
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkinglot.fetch(usedTicket));
+        assertEquals( "Unrecognized parking ticket.", exception.getMessage()) ;
     }
 
     @Test
@@ -95,6 +95,20 @@ public class ParkinglotTest {
 
         //then
         assertNull(ticket3);
+    }
+    
+    @Test
+    void should_return_exception_with_error_message_when_fetch_given_a_parkinglot_and_a_unrecognizedTicket() {
+        //given
+        ParkingLot parkinglot = new ParkingLot(2);
+        Ticket UnrecognizedTicket = new Ticket();
+
+
+        //when
+        
+        //then
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> parkinglot.fetch(UnrecognizedTicket));
+        assertEquals( "Unrecognized parking ticket.", exception.getMessage()) ;
     }
 
 }
