@@ -50,19 +50,6 @@ public class ParkinglotTest {
         assertEquals(car1, fetchedCar1);
         assertEquals(car2, fetchedCar2);
     }
-
-//    @Test
-//    void should_return_nothing_when_fetch_given_a_parkinglot_and_a_wrong_parking_ticket() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot(2);
-//        Ticket wrongTicket = new Ticket();
-//
-//        //when
-//        Car fetchedCar = parkinglot.fetch(wrongTicket);
-//
-//        //then
-//        assertNull(fetchedCar);
-//    }
     
     @Test
     void should_return_exception_with_error_message_when_fetch_given_a_parkinglot_and_a_used_ticket() {
@@ -81,7 +68,7 @@ public class ParkinglotTest {
     }
 
     @Test
-    void should_return_nothing_when_park_given_a_parkinglot_without_position_and_a_car() {
+    void should_return_exception_with_error_message_when_park_given_a_parkinglot_without_position_and_a_car() {
         //given
         ParkingLot parkinglot = new ParkingLot(2);
         Car car1 = new Car();
@@ -91,10 +78,10 @@ public class ParkinglotTest {
         Car car3 = new Car();
 
         //when
-        Ticket ticket3 = parkinglot.park(car3);
 
         //then
-        assertNull(ticket3);
+        Exception exception = assertThrows(NoParkPositionException.class, () -> parkinglot.park(car3));
+        assertEquals( "No available position.", exception.getMessage()) ;
     }
     
     @Test

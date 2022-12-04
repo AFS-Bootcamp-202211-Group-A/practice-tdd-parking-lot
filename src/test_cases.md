@@ -40,7 +40,7 @@
     When fetch the car, 
     Then return nothing with error message "Unrecognized parking ticket."
 
-[] Case 3 
+[x] Case 3 
     Given a parking lot without any position, and a car, 
     When park the car, 
     Then return nothing with error message "No available position."
