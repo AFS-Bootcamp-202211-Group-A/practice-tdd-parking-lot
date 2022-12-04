@@ -9,7 +9,7 @@
     When fetch the car, 
     Then return the parked car.
 
-[] Case 3 
+[x] Case 3 
     Given a parking lot with two parked cars, and two parking tickets, 
     When fetch the car twice, 
     Then return the right car with each ticket
