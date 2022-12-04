@@ -19,7 +19,7 @@
     When fetch the car, 
     Then return nothing.
 
-[] Case 5 
+[x] Case 5 
     Given a parking lot, and a used parking ticket, 
     When fetch the car, 
     Then return nothing.
