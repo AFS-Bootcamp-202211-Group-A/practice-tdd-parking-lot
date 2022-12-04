@@ -26,22 +26,22 @@ public class ParkingLot {
 
     }
 
-    public Car fetch(Ticket ticket) {
+    protected Car fetch(Ticket ticket) {
         if (!parkedCars.containsKey(ticket)){
             throw new UnrecognizedTicketException();
         }
         return parkedCars.remove(ticket);
     }
 
-    public boolean isNotFull(){
+    protected boolean isNotFull(){
         return parkedCars.size()<parkingSpaces;
     }
 
-    public boolean hasCar(Ticket ticket){
+    protected boolean hasCar(Ticket ticket){
         return parkedCars.containsKey(ticket);
     }
 
-    public int getRemainingSpace() {
+    protected int getRemainingSpace() {
         return parkingSpaces -parkedCars.size();
     }
 }

@@ -6,7 +6,7 @@ public class StandardParkingBoy {
 
     private ArrayList<ParkingLot> parkingLots = new ArrayList<>();
 
-    public ArrayList<ParkingLot> getParkingLots() {
+    protected ArrayList<ParkingLot> getParkingLots() {
         return parkingLots;
     }
 
