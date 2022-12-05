@@ -77,7 +77,7 @@
     Then return nothing with error message "No available position."
 
 # story4
-[] Case 1
+[x] Case 1
     Given a standard parking boy, who manage two parking lots, both with available position, and a car, 
     When park the car, 
     Then the car will be parked to the first parking lot

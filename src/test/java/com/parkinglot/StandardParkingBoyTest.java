@@ -2,6 +2,10 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StandardParkingBoyTest {
@@ -100,5 +104,22 @@ public class StandardParkingBoyTest {
         //then
         Exception exception = assertThrows(UnrecognizedTicketException.class, () -> standardParkingBoy.fetch(UnrecognizedTicket));
         assertEquals( "Unrecognized parking ticket.", exception.getMessage()) ;
+    }
+
+    @Test
+    public void should_park_first_parkinglot_when_park_given_a_standard_parking_boy_who_manage_two_parking_lot_both_with_available_position_and_a_car() {
+        // given
+        ParkingLot parkinglot1 = new ParkingLot(2);
+        ParkingLot parkinglot2 = new ParkingLot(2);
+        List<ParkingLot> parkingLots = Stream.of(parkinglot1, parkinglot2).collect(Collectors.toList());
+        StandardParkingBoy  standardParkingBoy = new StandardParkingBoy (parkingLots);
+        Car car = new Car();
+
+        // when
+        Ticket parkingTicket = standardParkingBoy.park(car);
+
+        // then
+        Car fetchedCar = parkinglot1.fetch(parkingTicket);
+        assertEquals(car, fetchedCar);
     }
 }
