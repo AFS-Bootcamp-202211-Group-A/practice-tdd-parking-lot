@@ -20,10 +20,7 @@ public class StandardParkingBoy {
                 .stream()
                 .filter(parkingLot -> !parkingLot.isFull())
                 .findFirst()
-                .orElse(null);
-        if(availableParkingLot == null){
-            throw new NoAvailablePositionException();
-        }
+                .orElseThrow(NoAvailablePositionException::new);
         return availableParkingLot.park(car);
     }
 
@@ -32,10 +29,7 @@ public class StandardParkingBoy {
                 .stream()
                 .filter(parkingLot -> !parkingLot.isWrongTicket(ticket))
                 .findFirst()
-                .orElse(null);
-        if(availableParkingLot == null) {
-            throw new UnrecognizedTicketException();
-        }
+                .orElseThrow(UnrecognizedTicketException::new);
         return availableParkingLot.fetch(ticket);
     }
 }

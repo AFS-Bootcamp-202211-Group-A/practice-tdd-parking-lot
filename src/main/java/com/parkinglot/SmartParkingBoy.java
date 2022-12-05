@@ -6,10 +6,6 @@ import java.util.List;
 
 public class SmartParkingBoy extends StandardParkingBoy{
 
-    public SmartParkingBoy(ParkingLot parkingLot) {
-        super(parkingLot);
-    }
-
     public SmartParkingBoy(List<ParkingLot> parkingLots){
         super(parkingLots);
     }
@@ -19,12 +15,8 @@ public class SmartParkingBoy extends StandardParkingBoy{
         ParkingLot availableParkingLot = parkingLots
                 .stream()
                 .filter(parkingLot -> !parkingLot.isFull())
-                .sorted(Comparator.comparing(ParkingLot::getEmptyPosition).reversed())
-                .findFirst()
-                .orElse(null);
-        if(availableParkingLot == null) {
-            throw new NoAvailablePositionException();
-        }
+                .max(Comparator.comparingInt(ParkingLot::getEmptyPosition))
+                .orElseThrow(NoAvailablePositionException::new);
         return availableParkingLot.park(car);
     }
 }

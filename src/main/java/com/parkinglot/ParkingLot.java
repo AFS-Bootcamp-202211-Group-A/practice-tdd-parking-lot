@@ -14,7 +14,7 @@ public class ParkingLot {
     public ParkingLot(int maxPosition){
         this.maxPosition = maxPosition;
     }
-    public Ticket park(Car car) {
+    protected Ticket park(Car car) {
         if (isFull()) {
             throw new NoAvailablePositionException();
         }
@@ -23,7 +23,7 @@ public class ParkingLot {
         return ticket;
     }
 
-    public Car fetch(Ticket ticket)  {
+    protected Car fetch(Ticket ticket)  {
         if(isWrongTicket(ticket)) {
             throw new UnrecognizedTicketException();
         }
@@ -32,15 +32,15 @@ public class ParkingLot {
         return returnCar;
     }
 
-    public boolean isWrongTicket(Ticket ticket) {
+    protected boolean isWrongTicket(Ticket ticket) {
         return !parkedPosition.containsKey(ticket);
     }
 
-    public boolean isFull() {
+    protected boolean isFull() {
         return parkedPosition.size() == maxPosition;
     }
 
-    public int getEmptyPosition() {
+    protected int getEmptyPosition() {
         return maxPosition - parkedPosition.size();
     }
 
