@@ -122,4 +122,21 @@ public class StandardParkingBoyTest {
         Car fetchedCar = parkinglot1.fetch(parkingTicket);
         assertEquals(car, fetchedCar);
     }
+
+    @Test
+    public void should_park_to_second_parking_lot_when_park_given_a_standard_parking_boy_who_manage_two_parking_lot_that_first_is_full_and_second_with_available_position_and_a_car() {
+        // given
+        ParkingLot parkinglot1 = new ParkingLot(0);
+        ParkingLot parkinglot2 = new ParkingLot(2);
+        List<ParkingLot> parkingLots = Stream.of(parkinglot1, parkinglot2).collect(Collectors.toList());
+        StandardParkingBoy  standardParkingBoy = new StandardParkingBoy (parkingLots);
+        Car car = new Car();
+
+        // when
+        Ticket parkingTicket = standardParkingBoy.park(car);
+
+        // then
+        Car fetchedCar = parkinglot2.fetch(parkingTicket);
+        assertEquals(car, fetchedCar);
+    }
 }

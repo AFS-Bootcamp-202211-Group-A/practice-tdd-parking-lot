@@ -19,7 +19,9 @@ public class StandardParkingBoy {
         if(this.parkingLot != null) {
             return this.parkingLot.park(car);
         }else{
-            return parkingLots.stream().findFirst().get().park(car);
+            return parkingLots.stream()
+                    .filter(parkingLot -> !parkingLot.isFull())
+                    .findFirst().get().park(car);
         }
 
     }

@@ -20,8 +20,12 @@ public class ParkingLot {
         return ticket;
     }
 
-    private boolean isFull() {
+    public boolean isFull() {
         return parkedPosition.size() == capacity;
+    }
+
+    public boolean isAssociateWithTicket(Ticket ticket) {
+        return parkedPosition.containsKey(ticket);
     }
 
     public Car fetch(Ticket ticket) {
