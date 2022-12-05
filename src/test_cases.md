@@ -46,12 +46,12 @@
     Then return nothing with error message "No available position."
 
 # story3
-[] Case 1
+[x] Case 1
     Given a parking lot, a standard parking boy, and a car, 
     When park the car, 
     Then return a parking ticket.
 
-[] Case 2 
+[x] Case 2 
     Given a parking lot with a parked car, a standard parking boy, and a parking ticket, 
     When fetch the car, 
     Then return the parked car.
