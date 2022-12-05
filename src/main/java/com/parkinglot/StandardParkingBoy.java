@@ -32,7 +32,9 @@ public class StandardParkingBoy {
         }else{
             return parkingLots.stream()
                     .filter(parkingLot -> parkingLot.isAssociateWithTicket(ticket))
-                    .findFirst().get().fetch(ticket);
+                    .findFirst()
+                    .orElseThrow(UnrecognizedTicketException::new)
+                    .fetch(ticket);
         }
 
     }
