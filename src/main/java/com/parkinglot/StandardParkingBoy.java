@@ -11,4 +11,9 @@ public class StandardParkingBoy {
         return this.parkingLot.park(car);
     }
 
+    public Car fetch(Ticket ticket){
+        return this.parkingLot.fetch(ticket);
+    }
+
+
 }
