@@ -12,6 +12,7 @@ public class ParkingLot {
     public int getVacancy() {
         return capacity - parkedPosition.size();
     }
+    public boolean isNotFull() { return getVacancy() > 0; }
 
     public ParkingLot(int capacity) {
         this.capacity = capacity;
@@ -34,7 +35,6 @@ public class ParkingLot {
         parkedPosition.remove(ticket);
         return fetchedCar;
     }
-
     public boolean isRecognizedTicket(Ticket ticket) {
         return parkedPosition.containsKey(ticket);
     }

@@ -15,22 +15,18 @@ public class SmartParkingBoy {
         this.parkingLots = parkingLots;
     }
     public Ticket park(Car car) {
-        Optional<ParkingLot> parkingLot = parkingLots.stream().max(Comparator.comparingInt(ParkingLot::getVacancy));
-        return parkingLot.map(lot -> lot.park(car)).orElse(null);
+        return parkingLots.stream()
+                .max(Comparator.comparingInt(ParkingLot::getVacancy))
+                .orElseThrow(NoAvailableSpaceException::new)
+                .park(car);
     }
 
     public Car fetch(Ticket ticket) {
-        UnrecognizedTicketException exception = null;
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.fetch(ticket);
-            } catch (UnrecognizedTicketException unrecognizedTicketException) {
-                exception = unrecognizedTicketException;
-            }
-        }
-        if (exception != null) {
-            throw exception;
-        }
-        return null;
+        return parkingLots
+                .stream()
+                .filter(parkingLot -> parkingLot.isRecognizedTicket(ticket))
+                .findFirst()
+                .orElseThrow(UnrecognizedTicketException::new)
+                .fetch(ticket);
     }
 }

@@ -12,33 +12,22 @@ public class StandardParkingBoy {
     public StandardParkingBoy(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
     }
+
     public Ticket park(Car car) {
-        RuntimeException runtimeException = null;
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.park(car);
-            } catch (RuntimeException e) {
-                runtimeException = e;
-            }
-        }
-        if (runtimeException != null) {
-            throw runtimeException;
-        }
-        return null;
+        return parkingLots
+                .stream()
+                .filter(ParkingLot::isNotFull)
+                .findFirst()
+                .orElseThrow(NoAvailableSpaceException::new)
+                .park(car);
     }
 
     public Car fetch(Ticket ticket) {
-        UnrecognizedTicketException exception = null;
-        for (ParkingLot parkingLot : parkingLots) {
-            try {
-                return parkingLot.fetch(ticket);
-            } catch (UnrecognizedTicketException unrecognizedTicketException) {
-                exception = unrecognizedTicketException;
-            }
-        }
-        if (exception != null) {
-            throw exception;
-        }
-        return null;
+        return parkingLots
+                .stream()
+                .filter(parkingLot -> parkingLot.isRecognizedTicket(ticket))
+                .findFirst()
+                .orElseThrow(UnrecognizedTicketException::new)
+                .fetch(ticket);
     }
 }
