@@ -27,7 +27,14 @@ public class StandardParkingBoy {
     }
 
     public Car fetch(Ticket ticket){
-        return this.parkingLot.fetch(ticket);
+        if(this.parkingLot != null) {
+            return this.parkingLot.fetch(ticket);
+        }else{
+            return parkingLots.stream()
+                    .filter(parkingLot -> parkingLot.isAssociateWithTicket(ticket))
+                    .findFirst().get().fetch(ticket);
+        }
+
     }
 
 
