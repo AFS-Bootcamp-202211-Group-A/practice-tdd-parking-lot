@@ -21,7 +21,9 @@ public class StandardParkingBoy {
         }else{
             return parkingLots.stream()
                     .filter(parkingLot -> !parkingLot.isFull())
-                    .findFirst().get().park(car);
+                    .findFirst()
+                    .orElseThrow(NoParkPositionException::new)
+                    .park(car);
         }
 
     }
