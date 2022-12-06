@@ -128,7 +128,7 @@
     When fetch the car
     Then return nothing with error message "Unrecognized parking ticket."
 
-[] Case 5
+[x] Case 5
     Given a smart parking boy, who manage two parking lots, and a used ticket
     When fetch the car
     Then return nothing with error message "Unrecognized parking ticket."
