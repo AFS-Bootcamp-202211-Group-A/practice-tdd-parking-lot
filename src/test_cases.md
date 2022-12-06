@@ -123,7 +123,7 @@
     When fetch the car twice
     Then return the right car with each ticket
 
-[] Case 4
+[x] Case 4
     Given a smart parking boy, who manage two parking lots, and an unrecognized ticket
     When fetch the car
     Then return nothing with error message "Unrecognized parking ticket."

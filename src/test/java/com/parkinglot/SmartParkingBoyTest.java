@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SmartParkingBoyTest {
     @Test
@@ -63,6 +64,21 @@ public class SmartParkingBoyTest {
         // then
         assertEquals(carA, fetchedCarA);
         assertEquals(carB, fetchedCarB);
+    }
+
+    @Test
+    public void should_return_exception_with_error_message_when_fetch_given_a_smart_parking_boy_who_manage_two_parking_lots_and_an_unrecognized_parking_ticket() {
+        // given
+        ParkingLot firstParkingLot = new ParkingLot(0);
+        ParkingLot secondParkingLot = new ParkingLot(0);
+        List<ParkingLot> parkingLots = Stream.of(firstParkingLot, secondParkingLot).collect(Collectors.toList());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+
+        Ticket unrecognizedParkingTicket = new Ticket();
+
+        // when & then
+        Exception exception = assertThrows(UnrecognizedTicketException.class, () -> smartParkingBoy.fetch(unrecognizedParkingTicket));
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
 }
