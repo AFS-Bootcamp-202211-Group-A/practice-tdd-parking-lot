@@ -24,6 +24,10 @@ public class ParkingLot {
         return parkedPosition.size() == capacity;
     }
 
+    public int getRemainingCapacity() {
+        return capacity-parkedPosition.size() ;
+    }
+
     public boolean isAssociateWithTicket(Ticket ticket) {
         return parkedPosition.containsKey(ticket);
     }
