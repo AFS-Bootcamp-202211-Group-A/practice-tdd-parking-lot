@@ -118,7 +118,7 @@
     When park the car
     Then the car will be parked to the second parking lot
 
-[] Case 3
+[x] Case 3
     Given a smart parking boy, who manage two parking lots, both with a parked car, and two parking ticket
     When fetch the car twice
     Then return the right car with each ticket

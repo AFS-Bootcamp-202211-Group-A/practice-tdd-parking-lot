@@ -43,4 +43,26 @@ public class SmartParkingBoyTest {
         assertEquals(car, fetchedCar);
     }
 
+    @Test
+    public void should_return_right_car_with_each_ticket_when_fetch_twice_given_a_smart_parking_boy_who_manage_two_parking_lots_both_with_a_parked_car_and_two_parking_ticket() {
+        // given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> parkingLots = Stream.of(firstParkingLot, secondParkingLot).collect(Collectors.toList());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+
+        Car carA = new Car();
+        Car carB = new Car();
+        Ticket parkingTicketA = smartParkingBoy.park(carA);
+        Ticket parkingTicketB = smartParkingBoy.park(carB);
+
+        // when
+        Car fetchedCarA = smartParkingBoy.fetch(parkingTicketA);
+        Car fetchedCarB = smartParkingBoy.fetch(parkingTicketB);
+
+        // then
+        assertEquals(carA, fetchedCarA);
+        assertEquals(carB, fetchedCarB);
+    }
+
 }
