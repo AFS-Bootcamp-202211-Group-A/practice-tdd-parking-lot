@@ -98,4 +98,20 @@ public class SmartParkingBoyTest {
         Exception exception = assertThrows(UnrecognizedTicketException.class, () -> smartParkingBoy.fetch(usedTicket));
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
+
+    @Test
+    public void should_return_exception_with_error_message_when_park_given_a_smart_parking_boy_who_manage_two_parking_lots_both_without_any_position_and_a_car() {
+        // given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        firstParkingLot.park(new Car());
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        secondParkingLot.park(new Car());
+        List<ParkingLot> parkingLots = Stream.of(firstParkingLot, secondParkingLot).collect(Collectors.toList());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car();
+
+        // when & then
+        Exception exception = assertThrows(NoParkPositionException.class, () -> smartParkingBoy.park(car));
+        assertEquals("No available position.", exception.getMessage());
+    }
 }
