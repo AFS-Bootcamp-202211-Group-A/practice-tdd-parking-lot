@@ -113,7 +113,7 @@
     When park the car
     Then the car will be parked to the first parking lot
 
-[] Case 2
+[x] Case 2
     Given a smart parking boy, who manage two parking lots, second one has more empty positions, and a car
     When park the car
     Then the car will be parked to the second parking lot

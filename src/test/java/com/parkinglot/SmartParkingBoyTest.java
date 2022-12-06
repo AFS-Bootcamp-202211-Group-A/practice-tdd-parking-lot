@@ -26,4 +26,21 @@ public class SmartParkingBoyTest {
         assertEquals(car, fetchedCar);
     }
 
+    @Test
+    public void should_park_to_second_parking_lot_when_park_given_a_smart_parking_boy_who_manage_two_parking_lots_that_second_one_has_more_empty_positions_and_a_car() {
+        // given
+        ParkingLot firstParkingLot = new ParkingLot(2);
+        ParkingLot secondParkingLot = new ParkingLot(3);
+        List<ParkingLot> parkingLots = Stream.of(firstParkingLot, secondParkingLot).collect(Collectors.toList());
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+        Car car = new Car();
+
+        // when
+        Ticket parkingTicket = smartParkingBoy.park(car);
+
+        // then
+        Car fetchedCar = secondParkingLot.fetch(parkingTicket);
+        assertEquals(car, fetchedCar);
+    }
+
 }
